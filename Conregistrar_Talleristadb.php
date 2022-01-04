@@ -1,32 +1,46 @@
-<?php  
+<?php
 
 include("con_db.php");
 
-  
 
-if (isset($_POST['registrar'])){
-  
- 
-   $dui = $_POST['dui'];
-   $nombre = $_POST['nombre'];
-   $apellido = $_POST['apellido'];
-   $sexo = $_POST['sexo_tallerista'];
-   $fecha_n = $_POST['fecha_n'];
-   $fecha_c = $_POST['fecha_c'];
-   $direccion = $_POST['direccion'];
-   $idcanton = $_POST['idcanton'];
-   $telefono = $_POST['telefono'];
+
+if (isset($_POST['registrar'])) {
+
+
+  $dui = $_POST['dui'];
+  $nombre = $_POST['nombre'];
+  $apellido = $_POST['apellido'];
+  $sexo = $_POST['sexo_tallerista'];
+  $fecha_n = $_POST['fecha_n'];
+  $fecha_c = $_POST['fecha_c'];
+  $direccion = $_POST['direccion'];
+  $idcanton = $_POST['idcanton'];
+  $telefono = $_POST['telefono'];
 
 
   $query = "INSERT INTO tb_talleristas(dui_tallerista, nombre_tallerista,apellido_tallerista,sexo_tallerista,fecha_nacimiento_tallerista,fecha_contrato_tallerista,direccion_tallerista,
    id_canton ,telefono) VALUES ('$dui','$nombre','$apellido','$sexo','$fecha_n','$fecha_c','$direccion','$idcanton','$telefono')";
-   $resultado = mysqli_query($conex,$query);
+  $resultado = mysqli_query($conex, $query);
 
-   if(!$resultado){
-           die("Este DUI ya está siendo ocupado!");
-       }
-         /* echo "registro Guardado";*/ 
-         header("Location: Ver_Tallerista.php");
+  if (!$resultado) {
+    die("Este DUI ya está siendo ocupado!");
+  }
+
+  //probando alertas
+  echo '<script>swal({
+        title: "Registro",
+        text: "Guardado!",
+        type: "success",
+        confirmButtonText: "Aceptar",
+        closeOnConfirm: false
+    },
+    function () {
+        location.href="";
+    });</script>';
+  //fin de probar alertas
+
+  /* echo "registro Guardado";*/
+ // header("Location: Ver_Tallerista.php");
 }
 
  /* echo $dui ;
@@ -37,24 +51,3 @@ if (isset($_POST['registrar'])){
    echo  $fecha_c;
    echo  $direccion ;
     echo $idcanton ;*/
-
-
-
-
-
-
-
-
-
-
-?>
-
-
-
-
-
-
-
-
-
- 
