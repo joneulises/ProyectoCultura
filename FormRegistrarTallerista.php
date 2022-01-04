@@ -39,7 +39,7 @@ include_once("./Plantilla/menuAdministrador.php");
 
                                     <!--COMIENZA FORMULARIO____________________*****************************************************************___________ -->
 
-                                    <form class="popup-form" action="Conregistrar_Talleristadb.php" method="POST" id="contactForm" name="contactform" data-toggle="validator">
+                                    <form class="popup-form" action="" method="POST" id="contactForm" name="contactform" data-toggle="validator">
                                         <div class="row">
                                             <div id="msgContactSubmit" class="hidden"></div>
 
@@ -191,13 +191,80 @@ include_once("./Plantilla/menuAdministrador.php");
         ***********************************-->
 
 
-<?php include_once("./Plantilla/footer.php");
+        <?php 
+ 
 
+ include_once("./Plantilla/footer.php");
+ 
+ include_once("./Plantilla/seccionScript.php");
+ 
+ //TODO EL CODIGO PARA GUARDAR
+ if (isset($_POST['registrar'])) {
+ 
+ 
+     $dui = $_POST['dui'];
+     $nombre = $_POST['nombre'];
+     $apellido = $_POST['apellido'];
+     $sexo = $_POST['sexo_tallerista'];
+     $fecha_n = $_POST['fecha_n'];
+     $fecha_c = $_POST['fecha_c'];
+     $direccion = $_POST['direccion'];
+     $idcanton = $_POST['idcanton'];
+     $telefono = $_POST['telefono'];
+   
+   
+     $query = "INSERT INTO tb_talleristas(dui_tallerista, nombre_tallerista,apellido_tallerista,sexo_tallerista,fecha_nacimiento_tallerista,fecha_contrato_tallerista,direccion_tallerista,
+      id_canton ,telefono) VALUES ('$dui','$nombre','$apellido','$sexo','$fecha_n','$fecha_c','$direccion','$idcanton','$telefono')";
+     $resultado = mysqli_query($conex, $query);
+   
+     if (!$resultado) {
+      // die("Este DUI ya está siendo ocupado!");
+     }
+   
+     //probando alertas
+   
+     /*echo '<script>
+     swal({
+           title: "Registro",
+           text: "Guardado!",
+           type: "success",
+           confirmButtonText: "Aceptar",
+           closeOnConfirm: false
+       },
+       function () {
+        window.location ="Ver_Tallerista.php";
+       });</script>';*/
 
-//plantilla fin
-include_once("./Plantilla/fin.php");
-//seccion de registro
-include_once("Conregistrar_Talleristadb.php");
-//seccion de registro
-?>
-
+       echo '<script>
+       Swal({
+        title: "Registro",
+        text: "Guardado!",
+        type: "success",
+        confirmButtonText: "Aceptar",
+        closeOnConfirm: false
+        }).then(function(result){
+           if(result.value){                   
+            window.location = "Ver_Tallerista.php";
+           }
+        });
+       </script>';
+     //fin de probar alertas
+   
+     /* echo "registro Guardado";*/
+    // header("Location: Ver_Tallerista.php");
+   }
+   
+    /* echo $dui ;
+       echo $nombre;
+      echo $apellido;
+      echo  $sexo ;
+      echo  $fecha_n ;
+      echo  $fecha_c;
+      echo  $direccion ;
+       echo $idcanton ;*/
+ 
+ //FIN DE CODIGO PARA GUARDAR
+ 
+ //plantilla fin
+ include_once("./Plantilla/fin.php");
+ ?>

@@ -23,10 +23,11 @@ if (isset($_POST['registrar'])) {
   $resultado = mysqli_query($conex, $query);
 
   if (!$resultado) {
-    die("Este DUI ya está siendo ocupado!");
+   // die("Este DUI ya está siendo ocupado!");
   }
 
   //probando alertas
+
   echo '<script>swal({
         title: "Registro",
         text: "Guardado!",
@@ -51,3 +52,4 @@ if (isset($_POST['registrar'])) {
    echo  $fecha_c;
    echo  $direccion ;
     echo $idcanton ;*/
+?>

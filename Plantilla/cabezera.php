@@ -25,7 +25,7 @@
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
     <!--alertas-->
-    <link rel="stylesheet" href="../vendor/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="./vendor/sweetalert2/dist/sweetalert2.min.css">
 
 
 
