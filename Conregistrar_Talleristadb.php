@@ -2,7 +2,8 @@
 
 include("con_db.php");
 
-
+include_once("./Plantilla/cabezera.php");
+include_once("./Plantilla/seccionScript.php");
 
 if (isset($_POST['registrar'])) {
 
@@ -28,16 +29,19 @@ if (isset($_POST['registrar'])) {
 
   //probando alertas
 
-  echo '<script>swal({
-        title: "Registro",
-        text: "Guardado!",
-        type: "success",
-        confirmButtonText: "Aceptar",
-        closeOnConfirm: false
-    },
-    function () {
-        location.href="";
-    });</script>';
+  echo '<script>
+  Swal({
+   title: "Registro",
+   text: "Guardado!",
+   type: "success",
+   confirmButtonText: "Aceptar",
+   closeOnConfirm: false
+   }).then(function(result){
+      if(result.value){                   
+       window.location = "Ver_Tallerista.php";
+      }
+   });
+  </script>';
   //fin de probar alertas
 
   /* echo "registro Guardado";*/

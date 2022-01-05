@@ -47,7 +47,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                                 <label>Nombre</label>
                                                 <div class="form-group">
 
-                                                    <input type="text" autocomplete="off" name="nombre" class="form-control" required placeholder="Ingresé su nombre" />
+                                                    <input type="text" autocomplete="off" name="nombre" class="form-control"  placeholder="Ingresé su nombre" />
                                                     <div class="textarea input-group-icon"><i class="fa fa-pencil"></i></div>
                                                 </div>
                                             </div>
@@ -55,7 +55,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                             <div class="col-md-6">
                                                 <label>Apellidos</label>
                                                 <div class="form-group">
-                                                    <input type="text" autocomplete="off" name="apellido" class="form-control" required placeholder="Ingresé sus apellidos" />
+                                                    <input type="text" autocomplete="off" name="apellido" class="form-control"  placeholder="Ingresé sus apellidos" />
                                                     <div class="textarea input-group-icon"><i class="fa fa-pencil"></i></div>
                                                 </div>
                                             </div>
@@ -63,7 +63,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                             <div class="col-md-6">
                                                 <label>DUI</label>
                                                 <div class="form-group">
-                                                    <input type="text" autocomplete="off" name="dui" class="form-control" pattern="^[0-9]{8}-[0-9]{1}$" required placeholder="00000000-0" size="10" maxlength="10" />
+                                                    <input type="text" autocomplete="off" name="dui" class="form-control" pattern="^[0-9]{8}-[0-9]{1}$"  placeholder="00000000-0" size="10" maxlength="10" />
                                                     <div class="input-group-icon"><i class="fa fa-address-card"></i></div>
                                                 </div>
                                             </div>
@@ -84,7 +84,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                                 <label>Fecha nácimiento</label>
                                                 <div class="form-group">
 
-                                                    <input type="date" autocomplete="off" name="fecha_n" class="form-control" required placeholder="Ingresé su fecha" />
+                                                    <input type="date" autocomplete="off" name="fecha_n" class="form-control"  placeholder="Ingresé su fecha" />
                                                     <div class="input-group-icon"><i class="fa fa-calendar"></i></div>
                                                 </div>
                                             </div>
@@ -92,7 +92,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                             <div class="col-md-6">
                                                 <label>Fecha Contrato</label>
                                                 <div class="form-group">
-                                                    <input type="date" autocomplete="off" name="fecha_c" class="form-control" required placeholder="Ingrese su fecha" />
+                                                    <input type="date" autocomplete="off" name="fecha_c" class="form-control" placeholder="Ingrese su fecha" />
                                                     <div class="input-group-icon"><i class="fa fa-calendar"></i></div>
                                                 </div>
                                             </div>
@@ -211,8 +211,17 @@ include_once("./Plantilla/menuAdministrador.php");
      $direccion = $_POST['direccion'];
      $idcanton = $_POST['idcanton'];
      $telefono = $_POST['telefono'];
-   
-   
+
+     $sql = "SELECT *  FROM tb_talleristas where dui_tallerista=$dui";
+     $validacion = mysqli_query($con, $sql);
+
+     if(mysqli_num_rows($validacion)>0){
+        echo '<script>
+        Swal.fire("Dui ya esta registrado");
+        </script>';
+
+     }else{
+
      $query = "INSERT INTO tb_talleristas(dui_tallerista, nombre_tallerista,apellido_tallerista,sexo_tallerista,fecha_nacimiento_tallerista,fecha_contrato_tallerista,direccion_tallerista,
       id_canton ,telefono) VALUES ('$dui','$nombre','$apellido','$sexo','$fecha_n','$fecha_c','$direccion','$idcanton','$telefono')";
      $resultado = mysqli_query($conex, $query);
@@ -249,6 +258,7 @@ include_once("./Plantilla/menuAdministrador.php");
         });
        </script>';
      //fin de probar alertas
+    }//fin else validacion
    
      /* echo "registro Guardado";*/
     // header("Location: Ver_Tallerista.php");
