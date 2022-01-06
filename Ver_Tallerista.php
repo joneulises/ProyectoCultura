@@ -27,43 +27,38 @@ $con = conectar();
 
     <!--font awesome con CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-      
+    <!--ALERTAS PARA EL SISTEMA-->
+    <link rel="stylesheet" href="./vendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
-<script type="text/javascript">
-      function ConfirmDelete()
-      {
-        var respuesta = confirm("Estas seguro que deseas Eliminar al Tallerista ?");
-        if(respuesta == true){
-          return true;
-        }else{
-          return false;
-        }
-      }
-</script>
+
+
+
 
 <body>
     <header>
         <h2 class="text-center text-light">Casa de la cultura</h2>
         <h2 class="text-center text-light">Listado de Talleristas</h2>
-       
+
     </header>
-    
+
     <div style="height:50px"></div>
-   
+
     <!--Ejemplo tabla con DataTables-->
     <div class="container">
-    <?php if(isset($_SESSION['message'])) { ?>
+        <?php if (isset($_SESSION['message'])) { ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <?= $_SESSION['message'] ?>
-                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <?= $_SESSION['message'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-    <?php } ?>
-         <a href="http://localhost/VersionDF/menu_administrador.php" class="btn btn-primary"><h4> Volver al Menú </h4></a>
+        <?php } ?>
+        <a href="http://localhost/VersionDF/menu_administrador.php" class="btn btn-primary">
+            <h4> Volver al Menú </h4>
+        </a>
         <br>
-       
+
         <div class="row">
             <div class="col-lg-12">
-               
+
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -78,13 +73,13 @@ $con = conectar();
                                 <th>Cantón</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
-                                
-                                
+
+
                             </tr>
                         </thead>
                         <tbody>
-                        <?php
-                                         $sql="SELECT
+                            <?php
+                            $sql = "SELECT
                                          c.nombre_canton, 
                                          t.dui_tallerista, 
                                          t.nombre_tallerista, 
@@ -99,26 +94,26 @@ $con = conectar();
                                          tb_cantones AS c
                                          ON 
                                              t.id_canton = c.id_canton";
-                                         $query=mysqli_query($con,$sql);
-                                     
-                                        
-                                            while($row=mysqli_fetch_array($query)){
-                                        ?>
-                                            <tr>
-                                                <td><?php  echo $row['dui_tallerista']?></td>
-                                                <td><?php  echo $row['nombre_tallerista']?></td>
-                                                <td><?php  echo $row['apellido_tallerista']?></td>
-                                                <td><?php  echo $row['fecha_nacimiento_tallerista']?></td>
-                                                <td><?php  echo $row['fecha_contrato_tallerista']?></td>
-                                                <td><?php  echo $row['telefono']?></td>   
-                                                <td><?php  echo $row['direccion_tallerista']?></td>  
-                                                <td><?php  echo $row['nombre_canton']?></td>   
-                                                <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info" >Editar</a></td>
-                                                <td><a href="Delete_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-danger"  onclick="return ConfirmDelete()">Eliminar</a></td> 
-                                            </tr>
-                                        <?php 
-                                            }
-                                        ?>
+                            $query = mysqli_query($con, $sql);
+
+
+                            while ($row = mysqli_fetch_array($query)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $row['dui_tallerista'] ?></td>
+                                    <td><?php echo $row['nombre_tallerista'] ?></td>
+                                    <td><?php echo $row['apellido_tallerista'] ?></td>
+                                    <td><?php echo $row['fecha_nacimiento_tallerista'] ?></td>
+                                    <td><?php echo $row['fecha_contrato_tallerista'] ?></td>
+                                    <td><?php echo $row['telefono'] ?></td>
+                                    <td><?php echo $row['direccion_tallerista'] ?></td>
+                                    <td><?php echo $row['nombre_canton'] ?></td>
+                                    <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar</a></td>
+                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_product" data-id="<?php echo $row['dui_tallerista'] ?>">Eliminar</a></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
 
 
 
@@ -149,6 +144,67 @@ $con = conectar();
 
     <!-- código JS propìo-->
     <script type="text/javascript" src="tablas_css/main.js"></script>
+    <!--PARA LAS ALERTAS-->
+    <script src="./vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $(document).on('click', '#delete_product', function(e) {
+                //recogemos los datos
+                var productId = $(this).data('id');
+                alert(productId);
+                //funcion que elimina
+                Delete(productId);
+                e.preventDefault();
+            });
+
+        });
+
+        function Delete(productId) {
+
+            swal({
+                title: 'Estas seguro?',
+                text: "Se borrará de forma permanente!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, bórralo!',
+                showLoaderOnConfirm: true,
+
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                       // alert('entre');
+                        $.ajax({
+                                url: 'Delete_Tallerista.php',
+                                type: 'POST',
+                                data: 'delete=' + productId,
+                                dataType: 'json'
+                            })
+                            .done(function(response) {
+                                Swal({
+                                    title: "Eliminado!",
+                                    text: response.message,
+                                    type: "success",
+                                    confirmButtonText: "Aceptar",
+                                    closeOnConfirm: false
+                                }).then(function(result) {
+                                    if (result.value) {
+                                        window.location = "Ver_Tallerista.php";
+                                    }
+                                });
+                            })
+                            .fail(function() {
+                                swal('Oops...', 'Algo salió mal con ajax !', 'error');
+                            });
+                    });
+                },
+                allowOutsideClick: false
+            });
+
+        }
+    </script>
 
 
 </body>
