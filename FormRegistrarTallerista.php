@@ -211,6 +211,7 @@ include_once("./Plantilla/menuAdministrador.php");
      $direccion = $_POST['direccion'];
      $idcanton = $_POST['idcanton'];
      $telefono = $_POST['telefono'];
+     $estado='activo';
 
      $sql = "SELECT *  FROM tb_talleristas where dui_tallerista=$dui";
      $validacion = mysqli_query($con, $sql);

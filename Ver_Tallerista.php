@@ -109,7 +109,7 @@ $con = conectar();
                                     <td><?php echo $row['direccion_tallerista'] ?></td>
                                     <td><?php echo $row['nombre_canton'] ?></td>
                                     <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar</a></td>
-                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_product" data-id="<?php echo $row['dui_tallerista'] ?>">Eliminar</a></td>
+                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_dui" data-id="<?php echo $row['dui_tallerista'] ?>">Eliminar</a></td>
                                 </tr>
                             <?php
                             }
@@ -150,18 +150,18 @@ $con = conectar();
     <script>
         $(document).ready(function() {
 
-            $(document).on('click', '#delete_product', function(e) {
+            $(document).on('click', '#delete_dui', function(e) {
                 //recogemos los datos
-                var productId = $(this).data('id');
-                alert(productId);
+                var dui = $(this).data('id');
+                alert(dui);
                 //funcion que elimina
-                Delete(productId);
+                Delete(dui);
                 e.preventDefault();
             });
 
         });
 
-        function Delete(productId) {
+        function Delete(dui) {
 
             swal({
                 title: 'Estas seguro?',
@@ -179,10 +179,11 @@ $con = conectar();
                         $.ajax({
                                 url: 'Delete_Tallerista.php',
                                 type: 'POST',
-                                data: 'delete=' + productId,
+                                data: 'delete=' +dui,
                                 dataType: 'json'
                             })
                             .done(function(response) {
+                                //dibujar la  respuesta
                                 Swal({
                                     title: "Eliminado!",
                                     text: response.message,
