@@ -7,7 +7,15 @@ include_once("./Plantilla/cabezera.php");
 include_once("./Plantilla/menuAdministrador.php");
 ?>
 
+<style>
+.text-success {
+    color: #28a745;
+}
+.text-danger {
+    color: #dc3545;
+}
 
+</style>
 
 <!--**********************************
             Content body start
@@ -41,7 +49,7 @@ include_once("./Plantilla/menuAdministrador.php");
 
                                 <!--COMIENZA FORMULARIO____________________*****************************************************************___________ -->
 
-                                <form class="popup-form" action="" method="POST" id="contactForm" name="contactform" data-toggle="validator">
+                                <form class="popup-form" action="" method="POST"  id="contactForm" name="contactform" data-toggle="validator">
                                     <div class="row">
                                         <div id="msgContactSubmit" class="hidden"></div>
 
@@ -131,7 +139,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                         <div class="col-md-6">
                                             <label>Contraseña</label>
                                             <div class="form-group">
-                                                <input type="password" autocomplete="off" name="contraseña1" class="form-control" />
+                                                <input type="password" autocomplete="off" name="contraseña1" id="pass1" class="form-control" />
                                                 <div class="textarea input-group-icon"><i class="fa fa-key"></i></div>
                                             </div>
                                         </div>
@@ -139,14 +147,18 @@ include_once("./Plantilla/menuAdministrador.php");
                                         <div class="col-md-6">
                                             <label>Confirmar Contraseña</label>
                                             <div class="form-group">
-                                                <input type="password" autocomplete="off" name="contraseña2" class="form-control" />
+                                                <input type="password" autocomplete="off" name="contraseña2" id="pass2"  onChange="checkPasswordMatch();" class="form-control" />
                                                 <div class="textarea input-group-icon"><i class="fa fa-key"></i></div>
                                             </div>
                                         </div>
 
+                                        <div class="col-md-12">
+                                            <div class="registrationFormAlert" id="mostrarAlerta">
+                                        </div>
+
 
                                         <div class="form-group last col-sm-12">
-                                            <input type="submit" name="registrar" value="Guardar" class="btn btn-custom" class="fa fa-save">
+                                            <input type="submit" name="registrar" id="guardar_r" value="Guardar"  class="btn btn-custom" class="fa fa-save">
                                             <!--	<button type="submit" id="submit" class="btn btn-custom"><em class="fa fa-save"></em> Registrar</button>-->
                                             <button type="reset" id="reset" class="btn btn-custom"><em class="fa fa-ban"></em>Cancelar</a></button>
 
@@ -194,7 +206,7 @@ include_once("./Plantilla/menuAdministrador.php");
 <!--**********************************
             Content body end
         ***********************************-->
-        
+
 
 
 <?php
@@ -204,24 +216,39 @@ include_once("./Plantilla/footer.php");
 include_once("./Plantilla/seccionScript.php");
 ?>
 <script>
-    
     $("#tipo").change(function() {
-         //alert($(this).val());
+        //alert($(this).val());
         if ($(this).val() === "ad") {
-           
+
             $("#empleado").prop("disabled", false);
             $("#tallerista_id").prop("disabled", true);
-           
+
         }
-       if ($(this).val() === "em") {
-        $("#empleado").prop("disabled", false);
-        $("#tallerista_id").prop("disabled", true);
+        if ($(this).val() === "em") {
+            $("#empleado").prop("disabled", false);
+            $("#tallerista_id").prop("disabled", true);
         }
-        if($(this).val()==="ta"){
+        if ($(this).val() === "ta") {
             $("#empleado").prop("disabled", true);
             $("#tallerista_id").prop("disabled", false);
         }
     });
+
+    //verificacion de contrasena
+    function checkPasswordMatch() {
+    var password = $("#pass1").val();
+    var confirmPassword = $("#pass2").val();
+
+    if (password != confirmPassword){
+    $("#mostrarAlerta").html("Contraseña no coinciden!").addClass('text-danger').removeClass('text-success');
+    $("#guardar_r").prop("disabled", true);
+    
+    }else{
+        $("#mostrarAlerta").html("Contraseña correctas!.").addClass('text-success').removeClass('text-danger');
+        $("#guardar_r").prop("disabled", false);
+    
+    }
+}
 
 </script>
 
@@ -241,7 +268,7 @@ if (isset($_POST['registrar'])) {
 
     $sql = "SELECT *  FROM tb_usuario where user=$user";
     $validacion = mysqli_query($con, $sql);
-    
+
     $correo_va = "SELECT *  FROM tb_usuario where correo=$correo";
     $validacion_co = mysqli_query($con, $correo_va);
 
@@ -253,14 +280,14 @@ if (isset($_POST['registrar'])) {
         echo '<script>
         Swal.fire("correo ya existe");
         </script>';
-    }*/else{
+    }*/ else {
 
-        if($tipo==="ad" || $tipo==="em"){
+        if ($tipo === "ad" || $tipo === "em") {
 
-        $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_empleado,correo,estado) VALUES ('$user','$pass','$tipo','$dui_empleado','$correo','$estado')";
-        $resultado = mysqli_query($conex, $query);
-        }else{
-          
+            $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_empleado,correo,estado) VALUES ('$user','$pass','$tipo','$dui_empleado','$correo','$estado')";
+            $resultado = mysqli_query($conex, $query);
+        } else {
+
             $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_tallerista,correo,estado) VALUES ('$user','$pass','$tipo','$dui_tallerista','$correo','$estado')";
             $resultado = mysqli_query($conex, $query);
         }
@@ -296,7 +323,7 @@ if (isset($_POST['registrar'])) {
         window.location ="Ver_Tallerista.php";
        });</script>';*/
 
-      
+
         //fin de probar alertas
     } //fin else validacion
 
