@@ -64,12 +64,13 @@ $con = conectar();
                         <thead>
                             <tr>
                                 <th>Empleado</th>
+                                <th>Tallerista</th>
                                 <th>Usuario</th>
                                 <th>Contraseña</th>
                                 <th>Cargo</th>
                                 <th>Correo</th>
                                 <th>Estado</th>
-                                <th>Editar</th>
+                                <th>Dar de Baja</th>
                                 <th>Eliminar</th>
 
 
@@ -77,35 +78,20 @@ $con = conectar();
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT
-                                         c.nombre_canton, 
-                                         t.dui_tallerista, 
-                                         t.nombre_tallerista, 
-                                         t.apellido_tallerista, 
-                                         DATE_FORMAT(t.fecha_nacimiento_tallerista,'%d/%m/%y') AS fecha_nacimiento_tallerista, 
-                                         DATE_FORMAT(t.fecha_contrato_tallerista,'%d/%m/%y') AS fecha_contrato_tallerista, 
-                                         t.direccion_tallerista, 
-                                         t.telefono
-                                     FROM
-                                         tb_talleristas AS t
-                                         INNER JOIN
-                                         tb_cantones AS c
-                                         ON 
-                                             t.id_canton = c.id_canton";
+                            $sql = "SELECT * FROM tb_usuario";
                             $query = mysqli_query($con, $sql);
 
 
                             while ($row = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
+                                    <td><?php echo $row['dui_empleado'] ?></td>
                                     <td><?php echo $row['dui_tallerista'] ?></td>
-                                    <td><?php echo $row['nombre_tallerista'] ?></td>
-                                    <td><?php echo $row['apellido_tallerista'] ?></td>
-                                    <td><?php echo $row['fecha_nacimiento_tallerista'] ?></td>
-                                    <td><?php echo $row['fecha_contrato_tallerista'] ?></td>
-                                    <td><?php echo $row['telefono'] ?></td>
-                                    <td><?php echo $row['direccion_tallerista'] ?></td>
-                                    <td><?php echo $row['nombre_canton'] ?></td>
+                                    <td><?php echo $row['user'] ?></td>
+                                    <td><?php echo $row['pass'] ?></td>
+                                    <td><?php echo $row['tipo'] ?></td>
+                                    <td><?php echo $row['correo'] ?></td>
+                                    <td><?php echo $row['estado'] ?></td>
                                     <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar</a></td>
                                     <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_dui" data-id="<?php echo $row['dui_tallerista'] ?>">Eliminar</a></td>
                                 </tr>
