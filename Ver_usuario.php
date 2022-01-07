@@ -37,7 +37,7 @@ $con = conectar();
 <body>
     <header>
         <h2 class="text-center text-light">Casa de la cultura</h2>
-        <h2 class="text-center text-light">Listado de Talleristas</h2>
+        <h2 class="text-center text-light">Listado de Usuarios</h2>
 
     </header>
 
