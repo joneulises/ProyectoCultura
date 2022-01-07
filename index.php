@@ -36,7 +36,7 @@
 					<div class="submenu-items">
 							<p>Menus</p>
 							<ul>
-								<li><a href="./Login_cultura1/logininicio.php?nivel=ad">Administrador</a></li>
+								<li><a href="Menu_administrador.php">Administrador</a></li>
 								<li><a href="./Login_cultura1/logininicio.php?nivel=em">Empleado</a></li>
 								<li><a href="./Login_cultura1/logininicio.php?nivel=ta">Tallerista</a></li>
 							</ul>
@@ -111,12 +111,7 @@
 		</div>
 	</div>
 	Fin de galerias-->
-	<?php
-	$verificar=$_GET['nivel'];
-	if($verificar=='ad'){
-		
-	}
-	?>
+	
 	<div class="colBottomMargin">
 		&nbsp;<div class="colBottomMargin">&nbsp;</div>
 	</div>
