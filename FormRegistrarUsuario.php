@@ -265,6 +265,8 @@ if (isset($_POST['registrar'])) {
     $dui_tallerista = $_POST['duitallerista'];
     $correo = $_POST['correo'];
     $estado = 'activo';
+    //PARA ENCRIPTAR LA CONTRASEÑA
+    $clave =  password_hash($_POST["contraseña2"], PASSWORD_DEFAULT) ;
 
     $sql = "SELECT *  FROM tb_usuario where user=$user";
     $validacion = mysqli_query($con, $sql);
@@ -284,11 +286,11 @@ if (isset($_POST['registrar'])) {
 
         if ($tipo === "ad" || $tipo === "em") {
 
-            $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_empleado,correo,estado) VALUES ('$user','$pass','$tipo','$dui_empleado','$correo','$estado')";
+            $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_empleado,correo,estado) VALUES ('$user','$clave','$tipo','$dui_empleado','$correo','$estado')";
             $resultado = mysqli_query($conex, $query);
         } else {
 
-            $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_tallerista,correo,estado) VALUES ('$user','$pass','$tipo','$dui_tallerista','$correo','$estado')";
+            $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_tallerista,correo,estado) VALUES ('$user','$clave','$tipo','$dui_tallerista','$correo','$estado')";
             $resultado = mysqli_query($conex, $query);
         }
 
@@ -303,7 +305,7 @@ if (isset($_POST['registrar'])) {
              closeOnConfirm: false
              }).then(function(result){
                 if(result.value){                   
-                 window.location = "Ver_Tallerista.php";
+                 window.location = "Ver_usuario.php";
                 }
              });
             </script>';

@@ -71,7 +71,7 @@ $con = conectar();
                                 <th>Correo</th>
                                 <th>Estado</th>
                                 <th>Dar de Baja</th>
-                                <th>Eliminar</th>
+                                <th>Acciones</th>
 
 
                             </tr>
@@ -92,8 +92,36 @@ $con = conectar();
                                     <td><?php echo $row['tipo'] ?></td>
                                     <td><?php echo $row['correo'] ?></td>
                                     <td><?php echo $row['estado'] ?></td>
-                                    <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar</a></td>
-                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_dui" data-id="<?php echo $row['dui_tallerista'] ?>">Eliminar</a></td>
+                                    <?php
+                                    if ($row['tipo'] == 'ad' || $row['tipo'] == 'em') {
+                                    ?>
+                                        <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar em</a></td>
+                                        <?php
+                                        if ($row['estado'] == 'activo') {
+                                        ?>
+                                            <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_em" data-id="<?php echo $row['dui_empleado'] ?>">dar baja</a></td>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <td><a href="javascript:void(0)" class="btn btn-success" id="alta_em" data-id="<?php echo $row['dui_empleado'] ?>">dar alta</a></td>
+
+                                        <?php
+                                        } // else estado empleado
+                                    } else {
+                                        ?>
+                                        <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar ta</a></td>
+                                        <?php
+                                        if ($row['estado'] == 'activo') {
+                                        ?>
+                                            <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_ta" data-id="<?php echo $row['dui_tallerista'] ?>">dar baja</a></td>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <td><a href="javascript:void(0)" class="btn btn-success" id="alta_ta" data-id="<?php echo $row['dui_tallerista'] ?>">dar alta</a></td>
+                                    <?php
+                                        } //else estado
+                                    } //else  tipo
+                                    ?>
                                 </tr>
                             <?php
                             }
@@ -134,49 +162,60 @@ $con = conectar();
     <script>
         $(document).ready(function() {
 
-            $(document).on('click', '#delete_dui', function(e) {
+            $(document).on('click', '#delete_em', function(e) {
                 //recogemos los datos
                 var dui = $(this).data('id');
-                alert(dui);
+                //alert(dui);
                 //funcion que elimina
-                Delete(dui);
+                baja_em(dui);
                 e.preventDefault();
             });
 
+            //VAMOS ADAR DE ALTA AL USUARIO
+            $(document).on('click', '#alta_em', function(e) {
+                //recogemos los datos
+                var dui = $(this).data('id');
+                //alert(dui);
+                //funcion que elimina
+                alta_em(dui);
+                e.preventDefault();
+            });
+            //FIN ALTA USUARIO EMPLEADO
+
         });
 
-        function Delete(dui) {
+        function baja_em(dui) {
 
             swal({
                 title: 'Estas seguro?',
-                text: "Se borrará de forma permanente!",
+                text: "Dará de Baja al usuario!",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, bórralo!',
+                confirmButtonText: 'Si!',
                 showLoaderOnConfirm: true,
 
                 preConfirm: function() {
                     return new Promise(function(resolve) {
-                       // alert('entre');
+                        // alert('entre');
                         $.ajax({
-                                url: 'Delete_Tallerista.php',
+                                url: 'BajaUsuarioEm.php',
                                 type: 'POST',
-                                data: 'delete=' +dui,
+                                data: 'delete=' + dui,
                                 dataType: 'json'
                             })
                             .done(function(response) {
                                 //dibujar la  respuesta
                                 Swal({
-                                    title: "Eliminado!",
+                                    title: "De Baja!",
                                     text: response.message,
                                     type: "success",
                                     confirmButtonText: "Aceptar",
                                     closeOnConfirm: false
                                 }).then(function(result) {
                                     if (result.value) {
-                                        window.location = "Ver_Tallerista.php";
+                                        window.location = "Ver_usuario.php";
                                     }
                                 });
                             })
@@ -189,6 +228,52 @@ $con = conectar();
             });
 
         }
+        //FUNCION DAR DE ALTA USUARIO
+        function alta_em(dui) {
+
+            swal({
+                title: 'Estas seguro?',
+                text: "Darás de alta al usuario!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si!',
+                showLoaderOnConfirm: true,
+
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        // alert('entre');
+                        $.ajax({
+                                url: 'AltaUsuarioEm.php',
+                                type: 'POST',
+                                data: 'delete=' + dui,
+                                dataType: 'json'
+                            })
+                            .done(function(response) {
+                                //dibujar la  respuesta
+                                Swal({
+                                    title: "De Alta!",
+                                    text: response.message,
+                                    type: "success",
+                                    confirmButtonText: "Aceptar",
+                                    closeOnConfirm: false
+                                }).then(function(result) {
+                                    if (result.value) {
+                                        window.location = "Ver_usuario.php";
+                                    }
+                                });
+                            })
+                            .fail(function() {
+                                swal('Oops...', 'Algo salió mal con ajax !', 'error');
+                            });
+                    });
+                },
+                allowOutsideClick: false
+            });
+
+        }
+        //FUNCION DAR DE BAJA USUARIO
     </script>
 
 
