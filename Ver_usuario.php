@@ -93,7 +93,7 @@ $con = conectar();
                                     <?php
                                     if ($row['tipo'] == 'ad' || $row['tipo'] == 'em') {
                                     ?>
-                                        <td><a href="FormActualizar_Usuario.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar em</a></td>
+                                        <td><a href="FormActualizar_empleado.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar em</a></td>
                                         <?php
                                         if ($row['estado'] == 'activo') {
                                         ?>
@@ -107,7 +107,7 @@ $con = conectar();
                                         } // else estado empleado
                                     } else {
                                         ?>
-                                        <td><a href="FormActualizar_Usuario.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar ta</a></td>
+                                        <td><a href="FormActualizar_tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar ta</a></td>
                                         <?php
                                         if ($row['estado'] == 'activo') {
                                         ?>
