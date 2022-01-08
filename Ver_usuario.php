@@ -66,11 +66,10 @@ $con = conectar();
                                 <th>Empleado</th>
                                 <th>Tallerista</th>
                                 <th>Usuario</th>
-                                <th>Contraseña</th>
                                 <th>Cargo</th>
                                 <th>Correo</th>
                                 <th>Estado</th>
-                                <th>Dar de Baja</th>
+                                <th>Editar</th>
                                 <th>Acciones</th>
 
 
@@ -88,14 +87,13 @@ $con = conectar();
                                     <td><?php echo $row['dui_empleado'] ?></td>
                                     <td><?php echo $row['dui_tallerista'] ?></td>
                                     <td><?php echo $row['user'] ?></td>
-                                    <td><?php echo $row['pass'] ?></td>
                                     <td><?php echo $row['tipo'] ?></td>
                                     <td><?php echo $row['correo'] ?></td>
                                     <td><?php echo $row['estado'] ?></td>
                                     <?php
                                     if ($row['tipo'] == 'ad' || $row['tipo'] == 'em') {
                                     ?>
-                                        <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar em</a></td>
+                                        <td><a href="FormActualizar_Usuario.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar em</a></td>
                                         <?php
                                         if ($row['estado'] == 'activo') {
                                         ?>
@@ -109,7 +107,7 @@ $con = conectar();
                                         } // else estado empleado
                                     } else {
                                         ?>
-                                        <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar ta</a></td>
+                                        <td><a href="FormActualizar_Usuario.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar ta</a></td>
                                         <?php
                                         if ($row['estado'] == 'activo') {
                                         ?>
@@ -275,6 +273,128 @@ $con = conectar();
         }
         //FUNCION DAR DE BAJA USUARIO
     </script>
+
+ <!--FUNCION PARA TALLERISTA-->
+
+ <script>
+        $(document).ready(function() {
+
+            $(document).on('click', '#delete_ta', function(e) {
+                //recogemos los datos
+                var dui = $(this).data('id');
+                //alert(dui);
+                //funcion que elimina
+                baja_ta(dui);
+                e.preventDefault();
+            });
+
+            //VAMOS ADAR DE ALTA AL USUARIO
+            $(document).on('click', '#alta_ta', function(e) {
+                //recogemos los datos
+                var dui = $(this).data('id');
+                //alert(dui);
+                //funcion que elimina
+                alta_ta(dui);
+                e.preventDefault();
+            });
+            //FIN ALTA USUARIO TALLERISTA
+
+        });
+       //DAR DE BAJA AL USUARIO TALLERISTA
+        function baja_ta(dui) {
+
+            swal({
+                title: 'Estas seguro?',
+                text: "Dará de Baja al usuario!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si!',
+                showLoaderOnConfirm: true,
+
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        // alert('entre');
+                        $.ajax({
+                                url: 'BajaUsuarioTa.php',
+                                type: 'POST',
+                                data: 'delete=' + dui,
+                                dataType: 'json'
+                            })
+                            .done(function(response) {
+                                //dibujar la  respuesta
+                                Swal({
+                                    title: "De Baja!",
+                                    text: response.message,
+                                    type: "success",
+                                    confirmButtonText: "Aceptar",
+                                    closeOnConfirm: false
+                                }).then(function(result) {
+                                    if (result.value) {
+                                        window.location = "Ver_usuario.php";
+                                    }
+                                });
+                            })
+                            .fail(function() {
+                                swal('Oops...', 'Algo salió mal con ajax !', 'error');
+                            });
+                    });
+                },
+                allowOutsideClick: false
+            });
+
+        }
+        //FUNCION DAR DE ALTA USUARIO
+        function alta_ta(dui) {
+
+            swal({
+                title: 'Estas seguro?',
+                text: "Darás de alta al usuario!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si!',
+                showLoaderOnConfirm: true,
+
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        // alert('entre');
+                        $.ajax({
+                                url: 'AltaUsuarioTa.php',
+                                type: 'POST',
+                                data: 'delete=' + dui,
+                                dataType: 'json'
+                            })
+                            .done(function(response) {
+                                //dibujar la  respuesta
+                                Swal({
+                                    title: "De Alta!",
+                                    text: response.message,
+                                    type: "success",
+                                    confirmButtonText: "Aceptar",
+                                    closeOnConfirm: false
+                                }).then(function(result) {
+                                    if (result.value) {
+                                        window.location = "Ver_usuario.php";
+                                    }
+                                });
+                            })
+                            .fail(function() {
+                                swal('Oops...', 'Algo salió mal con ajax !', 'error');
+                            });
+                    });
+                },
+                allowOutsideClick: false
+            });
+
+        }
+        //FUNCION DAR DE BAJA USUARIO
+    </script>
+
+
+
 
 
 </body>
