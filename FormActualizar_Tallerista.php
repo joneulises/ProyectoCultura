@@ -232,7 +232,7 @@ include_once("./Plantilla/footer.php");
 
 include_once("./Plantilla/seccionScript.php");
 
-//TODO EL CODIGO PARA GUARDAR
+//TODO EL CODIGO PARA ACTUALIZAR
 
 if (isset($_POST['update'])) {
     // $dui = $_GET['dui'];
@@ -271,7 +271,7 @@ if (isset($_POST['update'])) {
     //header("Location: Ver_Tallerista.php");
 }
 
-//FIN DE CODIGO PARA GUARDAR
+//FIN DE CODIGO PARA ACTUALIZAR
 
 //plantilla fin
 include_once("./Plantilla/fin.php");
