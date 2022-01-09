@@ -28,18 +28,11 @@ $con = conectar();
     <!--font awesome con CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     
+    <!--ALERTAS PARA EL SISTEMA-->
+    <link rel="stylesheet" href="./vendor/sweetalert2/dist/sweetalert2.min.css">
+
 </head>
-<script type="text/javascript">
-      function ConfirmDelete()
-      {
-        var respuesta = confirm("Estas seguro que deseas Eliminar el Horario ?");
-        if(respuesta == true){
-          return true;
-        }else{
-          return false;
-        }
-      }
-</script>
+
 
 <body>
     <header>
@@ -103,13 +96,9 @@ $con = conectar();
                                                 <td><?php  echo $row['nombre_taller']?></td>  
                                                 <td><?php  echo $row['nombre']?></td> 
                                                 <td><a href="FormActualizar_Horario.php?id=<?php echo $row['id_horario'] ?>" class="btn btn-info" >Editar</a></td>
-                                                <td><a href="Delete_Horario.php?id=<?php echo $row['id_horario'] ?>" class="btn btn-danger"  onclick="return ConfirmDelete()">Eliminar</a></td> 
+                                                <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_id" data-id="<?php echo $row['id_horario'] ?>">Eliminar</a></td>
+                                                 
 
-
-
-                                                
-
-                                             
                                             </tr>
                                         <?php 
                                             }
@@ -144,6 +133,69 @@ $con = conectar();
 
     <!-- código JS propìo-->
     <script type="text/javascript" src="tablas_css/main.js"></script>
+
+    <!--PARA LAS ALERTAS-->
+    <script src="./vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $(document).on('click', '#delete_id', function(e) {
+                //recogemos los datos
+                var id = $(this).data('id');
+              //  alert(id);
+                //funcion que elimina
+                Delete(id);
+                e.preventDefault();
+            });
+
+        });
+
+        function Delete(id) {
+
+            swal({
+                title: 'Estas seguro?',
+                text: "Se borrará de forma permanente!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, bórralo!',
+                showLoaderOnConfirm: true,
+
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                       // alert('entre');
+                        $.ajax({
+                                url: 'Delete_Horario.php',
+                                type: 'POST',
+                                data: 'delete=' +id,
+                                dataType: 'json'
+                            })
+                            .done(function(response) {
+                                //dibujar la  respuesta
+                                Swal({
+                                    title: "Eliminado!",
+                                    text: response.message,
+                                    type: "success",
+                                    confirmButtonText: "Aceptar",
+                                    closeOnConfirm: false
+                                }).then(function(result) {
+                                    if (result.value) {
+                                        window.location = "Ver_Horario.php";
+                                    }
+                                });
+                            })
+                            .fail(function() {
+                                swal('Oops...', 'Algo salió mal con ajax !', 'error');
+                            });
+                    });
+                },
+                allowOutsideClick: false
+            });
+
+        }
+    </script>
 
 
 </body>

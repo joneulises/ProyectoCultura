@@ -69,7 +69,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label class="control-label">Genero</label>
+                                                <label class="control-label">Género</label>
                                                 <div class="form-group">
                                                     <select name="sexo_tallerista" class="form-control">
                                                         <option selected>Seleccioné...</option>
@@ -107,7 +107,7 @@ include_once("./Plantilla/menuAdministrador.php");
 
                                             <!--<div class="row form-group">-->
                                             <div class="col-md-6">
-                                                <label class="control-label">Cantón de procedencia</label>
+                                                <label class="control-label">Procedencia</label>
                                                 <div class="form-group">
                                                     <select name="idcanton" class="form-control">
 

@@ -153,7 +153,7 @@ $con = conectar();
             $(document).on('click', '#delete_dui', function(e) {
                 //recogemos los datos
                 var dui = $(this).data('id');
-                alert(dui);
+               // alert(dui);
                 //funcion que elimina
                 Delete(dui);
                 e.preventDefault();
