@@ -14,94 +14,80 @@
 </head>
 
 <body>
-    <form class="formulario" action="">
+    <form class="formulario" action="" method="POST">
 
-        <h1>Verificación Recuperar Contraseña </h1>
+        <h1>Atualización de Contraseña </h1>
         <div class="contenedor">
 
             <div class="input-contenedor">
                 <i class="fas fa-address-card icon"></i>
-                <input type="text" name="dui" id="dui" placeholder="Ingresa tu numero de Dui">
+                <input type="password" name="pass1" id="pass1" placeholder="Ingresa tu nueva contraseña">
 
             </div>
 
             <div class="input-contenedor">
                 <i class="fas fa-envelope icon"></i>
-                <input type="text" name="correo" id="correo" placeholder="Correo Electronico">
+                <input type="text" name="pass2" id="pass2" placeholder="Repite tu contraseña">
             </div>
 
 
         </div>
-        <input type="button" value="Verificar" id="contra" class="button">
-        <p> <a class="link" href="registrarcontra.html"> CANCELAR</a></p>
+        <input type="submit" name="registrar" value="Actualizar" id="contra" class="button">
+        <p> <a class="link" href="ogininicio.php"> CANCELAR</a></p>
         </div>
     </form>
     <script src="../tablas_css/jquery/jquery-3.3.1.min.js"></script>
     <script src="../vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 
 
-    <script>
-        //VAMOS ADAR DE ALTA AL USUARIO
-        $(document).on('click', '#contra', function(e) {
-            //recogemos los datos
-            var dui = document.getElementById("dui").value;
-            var correo = document.getElementById("correo").value;
-            if (dui == '' && correo == '') {
-                Swal({
-                    title: "Campos vacíos",
-                    text: "Verifique los campos",
-                    type: "warning",
-                    confirmButtonText: "Aceptar",
-                    closeOnConfirm: false
-                }).then(function(result) {
-                    if (result.value) {
-                        window.location = "verificacioncontra.php";
-                    }
-                });
+    <?php
+    //TODO EL CODIGO PARA GUARDAR
+    if (isset($_POST['registrar'])) {
+        include_once("../con_db.php");
+        $con = conectar();
 
-            } else {
-                //alert(dui);
-                //funcion que elimina
-                EnviarCorreo(dui, correo);
-            }
-            e.preventDefault();
-        });
-        //FIN ALTA USUARIO EMPLEADO
 
-        function EnviarCorreo(dui, correo) {
+        $pass = $_POST['pass2'];
+        $tipo = $_GET['t'];
+        $dui = $_GET['var'];
 
-            $.ajax({
-                    url: '../enviar_correo.php',
-                    type: 'POST',
-                    data: {
-                        du: dui,
-                        co: correo
-                    },
-                    dataType: 'json'
-                })
-                .done(function(response) {
-                    //dibujar la  respuesta
-                   
-                        Swal({
-                        title: "Verifica tu correo!",
-                        text: response.message,
-                        type: "warning",
-                        confirmButtonText: "Aceptar",
-                        closeOnConfirm: false
-                    }).then(function(result) {
-                        if (result.value) {
-                            window.location = "logininicio.php";
-                        }
-                    });
+        //PARA ENCRIPTAR LA CONTRASEÑA
+        $clave =  password_hash($_POST["pass2"], PASSWORD_DEFAULT);
 
-                   
-                })
-                .fail(function() {
-                    swal('Oops...', 'Algo salió mal con ajax !', 'error');
-                });
 
+
+        if ($tipo === "ad" || $tipo === "em") {
+
+            $query = "UPDATE tb_usuario SET pass ='$clave' WHERE dui_empleado ='$dui'";
+            $resultado = mysqli_query($conex, $query);
+        } else {
+            $query = "UPDATE tb_usuario SET pass ='$clave' WHERE dui_tallerista ='$dui'";
+
+            $resultado = mysqli_query($conex, $query);
         }
-    </script>
+
+        if ($resultado) {
+            // die("Este DUI ya está siendo ocupado!");
+            echo '<script>
+            Swal({
+             title: "Actualización",
+             text: "Contraseña actualizada correctamente!",
+             type: "success",
+             confirmButtonText: "Aceptar",
+             closeOnConfirm: false
+             }).then(function(result){
+                if(result.value){                   
+                 window.location = "logininicio.php";
+                }
+             });
+            </script>';
+        }
+
+        //fin de probar alertas
+    }
+
+
+    ?>
 
 </body>
 
