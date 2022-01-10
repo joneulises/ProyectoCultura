@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="../vendor/sweetalert2/dist/sweetalert2.min.css">
+    <style>
+        .text-success {
+            color: #28a745;
+        }
 
+        .text-danger {
+            color: #dc3545;
+        }
+    </style>
 
 
 </head>
@@ -27,17 +35,38 @@
 
             <div class="input-contenedor">
                 <i class="fas fa-envelope icon"></i>
-                <input type="text" name="pass2" id="pass2" placeholder="Repite tu contraseña">
+                <input type="password" name="pass2" id="pass2" onChange="checkPasswordMatch();" placeholder="Repite tu contraseña">
             </div>
 
+            <div class="input-contenedor">
+                <div class="registrationFormAlert" id="mostrarAlerta">
+                </div>
 
-        </div>
-        <input type="submit" name="registrar" value="Actualizar" id="contra" class="button">
-        <p> <a class="link" href="ogininicio.php"> CANCELAR</a></p>
+
+            </div>
+            <input type="submit" name="registrar" value="Actualizar" id="contra" class="button">
+            <p> <a class="link" href="ogininicio.php"> CANCELAR</a></p>
         </div>
     </form>
     <script src="../tablas_css/jquery/jquery-3.3.1.min.js"></script>
     <script src="../vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script>
+        //verificacion de contrasena
+        function checkPasswordMatch() {
+            var password = $("#pass1").val();
+            var confirmPassword = $("#pass2").val();
+
+            if (password != confirmPassword) {
+                $("#mostrarAlerta").html("Contraseña no coinciden!").addClass('text-danger').removeClass('text-success');
+                $("#contra").prop("disabled", true);
+
+            } else {
+                $("#mostrarAlerta").html("Contraseña correctas!.").addClass('text-success').removeClass('text-danger');
+                $("#contra").prop("disabled", false);
+
+            }
+        }
+    </script>
 
 
     <?php
