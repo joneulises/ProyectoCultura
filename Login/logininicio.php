@@ -39,9 +39,9 @@
             </div>
             <input type="submit" name="acceder" id="guardar_r" value="Acceder" class="button fas fa-sign-in-alt">
             <!-- <input type="submit" value="Ingresar" class="button" >  -->
-            <p><a class="link" href="verificacioncontra.html">¿Olvido la contraseña? </a>
+            <p><a class="link" href="verificacioncontra.php">¿Olvido la contraseña? </a>
             <p></p>
-            <p>¿No tienes una cuenta? <a class="link" href="verificarusuario.html">Registrate </a></p>
+            
 
         </div>
     </form>
