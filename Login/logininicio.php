@@ -119,7 +119,7 @@
                          closeOnConfirm: false
                          }).then(function(result){
                             if(result.value){                   
-                             window.location = "../menu_administrador.php";
+                             window.location = "../menu_tallerista.php";
                             }
                          });
                         </script>';
