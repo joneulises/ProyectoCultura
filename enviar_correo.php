@@ -42,7 +42,7 @@ if (mysqli_num_rows($query) > 0) {
     <br>
     <h4>Para recuperar tu contraseña ingresa al siguiente enlace</h4>
     <br>
-    <h4>https://localhost/ProyectoCultura/Login/verificacioncontra.php?var='.$tallerista.'&t=='.$tipo.'</h4>
+    <h4>https://localhost/ProyectoCultura/Login/ActualizarPass.php?var='.$tallerista.'&t=='.$tipo.'</h4>
 
     <br>
     ';
