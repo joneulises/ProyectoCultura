@@ -1,4 +1,9 @@
 <?php
+session_start();
+if($_SESSION['empleado'] ==''){
+    header("Location:index.php");
+}
+
 include("con_db.php");
 $con = conectar();
 

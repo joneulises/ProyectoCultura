@@ -47,6 +47,7 @@
     </form>
     <script src="../vendor/sweetalert2/dist/sweetalert2.min.js"></script>
     <?php
+    session_start();
     include_once("../con_db.php");
     $conn = conectar();
 
@@ -64,15 +65,15 @@
             if ($query) { //si es exitosa la consulta entrara sino al else donde estara la alerta
 
                 if ($row = mysqli_fetch_array($query)) {
-                    $contra = $row['pass'];
+                    $contra = $row['pass'];//contraseña
                     if (password_verify($con, $contra)) { //VERIFICAR EL ENCRIPTADO DE LA CONTRASEÑA
 
                         if ($row['estado'] == 'activo') {
                             $nombre = $row['user'];
                             $_SESSION['user_name'] = $nombre;
                             $_SESSION['tipo_user'] = $row['tipo'];
-                            $_SESSION['dui_empleado'] = $row['dui_empleado'];
-                            $_SESSION['dui_tallerista'] = $row['dui_tallerista'];
+                            $_SESSION['empleado'] = $row['dui_empleado'];
+                            $_SESSION['tallerista'] = $row['dui_tallerista'];
                             //SI EL QUE INICIA SESION ES UN EMPLEADO
                             if ($row['tipo'] == 'em') {
                                 echo '<script>
@@ -148,7 +149,7 @@
                     echo '<script>
                         Swal({
                          title: "Error",
-                         text: "Usuario no registrado o inactivo!",
+                         text: "Usuario no registrado!",
                          type: "warning",
                          confirmButtonText: "Aceptar",
                          closeOnConfirm: false
@@ -174,6 +175,22 @@
                  });
                 </script>';
             }
+        }else{
+
+            echo '<script>
+            Swal({
+             title: "Error",
+             text: "Campos Vacíos!",
+             type: "warning",
+             confirmButtonText: "Aceptar",
+             closeOnConfirm: false
+             }).then(function(result){
+                if(result.value){                   
+                 window.location = "logininicio.php";
+                }
+             });
+            </script>';
+
         }
     } //if btn
     ?>
