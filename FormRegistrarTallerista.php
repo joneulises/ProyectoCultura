@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 if($_SESSION['empleado'] ==''){
     header("Location:index.php");
@@ -6,6 +8,7 @@ if($_SESSION['empleado'] ==''){
 
 include("con_db.php");
 $con = conectar();
+
 
 
 include_once("./Plantilla/cabezera.php");
@@ -216,7 +219,7 @@ include_once("./Plantilla/menuAdministrador.php");
      $direccion = $_POST['direccion'];
      $idcanton = $_POST['idcanton'];
      $telefono = $_POST['telefono'];
-     $estado='activo';
+     //$estado='activo';
 
      $sql = "SELECT *  FROM tb_talleristas where dui_tallerista=$dui";
      $validacion = mysqli_query($con, $sql);

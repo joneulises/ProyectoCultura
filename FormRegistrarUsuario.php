@@ -4,6 +4,8 @@ session_start();
 if($_SESSION['empleado'] ==''){
     header("Location:index.php");
 }
+
+
 include("con_db.php");
 $con = conectar();
 
@@ -59,7 +61,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                         <div id="msgContactSubmit" class="hidden"></div>
 
                                         <div class="col-md-12">
-                                            <label class="control-label">Tipo</label>
+                                            <label class="control-label">Tipo de Usuario</label>
                                             <div class="form-group">
                                                 <select name="tipo" id="tipo" class="form-control">
                                                     <option selected>Seleccioné...</option>
@@ -74,7 +76,7 @@ include_once("./Plantilla/menuAdministrador.php");
 
                                         <!--<div class="row form-group">-->
                                         <div class="col-md-6">
-                                            <label class="control-label">Empleado</label>
+                                            <label class="control-label">Empleados</label>
                                             <div class="form-group">
                                                 <select name="duiempleado" id="empleado" class="form-control" disabled>
 
@@ -103,7 +105,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                             <div class="form-group">
                                                 <select name="duitallerista" id="tallerista_id" class="form-control" disabled>
 
-                                                    <option required>Seleccioné el empleado</option>
+                                                    <option required>Seleccioné el tallerista</option>
 
                                                     <?php
                                                     $sql = "SELECT dui_tallerista,CONCAT( nombre_tallerista,' ', apellido_tallerista ) AS nombre  FROM tb_talleristas";

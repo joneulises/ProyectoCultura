@@ -51,7 +51,7 @@ $con = conectar();
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php } ?>
-        <a href="http://localhost/VersionDF/menu_administrador.php" class="btn btn-primary">
+        <a href="http://localhost/ProyectoCultura/menu_administrador.php" class="btn btn-primary">
             <h4> Volver al Menú </h4>
         </a>
         <br>

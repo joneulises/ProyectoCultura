@@ -114,6 +114,7 @@
 
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-man"></i><span class="nav-text">Tallerista</span></a>
                     <ul aria-expanded="false">
+                        <li><a href="./FormRegistrarTallerista.php">Registrar Tallerista</a></li>
                         <li><a href="./Ver_Tallerista.php">Ver Talleristas</a></li>
                         <li><a href="./FormRegistrarHorario.php">Asignar Horario</a></li>
                         <li><a href="./Ver_Horario.php">Ver Horarios</a></li>

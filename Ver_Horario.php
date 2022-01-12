@@ -43,8 +43,8 @@ $con = conectar();
    
     <!--Ejemplo tabla con DataTables-->
     <div class="container">
-         <a href="http://localhost/VersionDF/menu_administrador.php" class="btn btn-primary"><h4> Volver al Menú </h4></a>
-         <a href="http://localhost/VersionDF/FormRegistrarHorario.php" class="btn btn-primary"><h4> Nuevo Horario </h4></a>
+         <a href="http://localhost/ProyectoCultura/menu_administrador.php" class="btn btn-primary"><h4> Volver al Menú </h4></a>
+         <a href="http://localhost/ProyectoCultura/FormRegistrarHorario.php" class="btn btn-primary"><h4> Nuevo Horario </h4></a>
         <br>
 
         <div class="row">
