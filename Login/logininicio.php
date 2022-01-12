@@ -68,7 +68,7 @@
                     $contra = $row['pass'];//contraseña
                     if (password_verify($con, $contra)) { //VERIFICAR EL ENCRIPTADO DE LA CONTRASEÑA
 
-                        if ($row['estado'] == 'activo') {
+                      if ($row['estado'] == 'activo') {
                             $nombre = $row['user'];
                             $_SESSION['user_name'] = $nombre;
                             $_SESSION['tipo_user'] = $row['tipo'];
@@ -77,7 +77,7 @@
                             //SI EL QUE INICIA SESION ES UN EMPLEADO
                             if ($row['tipo'] == 'em') {
                                 echo '<script>
-                        Swal({
+                         Swal({
                          title: "Bienvenido",
                          text: "Datos de usuario correctos!",
                          type: "success",
@@ -88,14 +88,15 @@
                              window.location = "../menu_empleado.php";
                             }
                          });
-                        </script>';
+                         </script>';
                             }
                             //FIN DE QUE EL INICIO DE SESION ES EMPLEADO
                             //SI EL QUE INICIA SESION ES UN ADMINISTRADOR
-                            if ($row['tipo'] == 'ad') {
+                        
+                              if ($row['tipo'] == 'ad') {
                                 echo '<script>
-                        Swal({
-                         title: "Bienvenido",
+                         Swal({
+                          title: "Bienvenido",
                          text: "Datos de usuario correctos!",
                          type: "success",
                          confirmButtonText: "Aceptar",
@@ -105,14 +106,14 @@
                              window.location = "../menu_administrador.php";
                             }
                          });
-                        </script>';
-                            }
+                         </script>';
+                         }
                             //FIN DE QUE EL INICIO DE SESION ES ADMINISTRADOR
 
                             //SI EL QUE INICIA SESION ES UN TALLERISTA
-                            if ($row['tipo'] == 'ta') {
+                          if ($row['tipo'] == 'ta') {
                                 echo '<script>
-                        Swal({
+                         Swal({
                          title: "Bienvenido",
                          text: "Datos de usuario correctos!",
                          type: "success",
@@ -123,11 +124,26 @@
                              window.location = "../menu_tallerista.php";
                             }
                          });
-                        </script>';
+                         </script>';
                             }
                             //FIN DE QUE EL INICIO DE SESION ES UN TALLERISTA
 
-                        }
+                        }else{
+                            echo '<script>
+                            Swal({
+                             title: "Error",
+                             text: "Usuario Inactivo!",
+                             type: "warning",
+                             confirmButtonText: "Aceptar",
+                             closeOnConfirm: false
+                             }).then(function(result){
+                                if(result.value){                   
+                                 window.location = "logininicio.php";
+                                }
+                             });
+                            </script>';
+    
+                        } //
                     }else{
                         echo '<script>
                         Swal({
@@ -144,7 +160,7 @@
                         </script>';
 
                     }//CONTRASENA INCORRECTA
-                } else {
+             } else {
 
                     echo '<script>
                         Swal({

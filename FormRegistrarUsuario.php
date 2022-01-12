@@ -268,28 +268,38 @@ if (isset($_POST['registrar'])) {
     $user = $_POST['usuario'];
     $pass = $_POST['contraseña2'];
     $tipo = $_POST['tipo'];
-    $dui_empleado = $_POST['duiempleado'];
-    $dui_tallerista = $_POST['duitallerista'];
+    if(isset($_POST['duiempleado'])){
+        $dui_empleado = $_POST['duiempleado'];
+    }else{
+        $dui_empleado = null;
+    }
+
+    if(isset($_POST['duitallerista'])){
+        $dui_tallerista = $_POST['duitallerista'];
+    }else{
+        $dui_tallerista = null;
+    }
+    
     $correo = $_POST['correo'];
     $estado = 'activo';
     //PARA ENCRIPTAR LA CONTRASEÑA
     $clave =  password_hash($_POST["contraseña2"], PASSWORD_DEFAULT) ;
 
-    $sql = "SELECT *  FROM tb_usuario where user=$user";
+    $sql = "SELECT *  FROM tb_usuario where user='$user'";
     $validacion = mysqli_query($con, $sql);
 
-    $correo_va = "SELECT *  FROM tb_usuario where correo=$correo";
-    $validacion_co = mysqli_query($con, $correo_va);
+    $correo_va = "SELECT *  FROM tb_usuario where correo='$correo'";
+     $validacion_co = mysqli_query($con, $correo_va);
 
-    if (mysqli_num_rows($validacion) > 0) {
+    if (mysqli_num_rows($validacion)> 0 ) {
         echo '<script>
         Swal.fire("usuario ya existe");
         </script>';
-    } /*else if(mysqli_num_rows($validacion_co) > 0) {
+    } else if(mysqli_num_rows($validacion_co) > 0) {
         echo '<script>
         Swal.fire("correo ya existe");
         </script>';
-    }*/ else {
+    } else {
 
         if ($tipo === "ad" || $tipo === "em") {
 
@@ -308,6 +318,20 @@ if (isset($_POST['registrar'])) {
              title: "Registro",
              text: "Guardado!",
              type: "success",
+             confirmButtonText: "Aceptar",
+             closeOnConfirm: false
+             }).then(function(result){
+                if(result.value){                   
+                 window.location = "Ver_usuario.php";
+                }
+             });
+            </script>';
+        }else{
+            echo '<script>
+            Swal({
+             title: "Error",
+             text: "Fallo!",
+             type: "warning",
              confirmButtonText: "Aceptar",
              closeOnConfirm: false
              }).then(function(result){
