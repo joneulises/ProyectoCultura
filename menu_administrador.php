@@ -266,7 +266,7 @@ if($_SESSION['empleado'] ==''){
                                 class="icon ion-md-time"></i><span class="nav-text">Bitacora</span></a>
                         <ul aria-expanded="false">
                         
-                            <li><a href="#">Ver bitacora</a></li>
+                            <li><a href="./Ver_Bitacora.php">Ver bitacora</a></li>
                         </ul>
                     </li>
 
