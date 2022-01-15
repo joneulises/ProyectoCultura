@@ -12,7 +12,11 @@ $con = conectar();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="#" />
-    <title>Casa de la cultura</title>
+
+   <!-- <img src="ProyectoCultura\images\img_casacultura/logo.png" width="100"
+     height="50">-->
+    <title><center>Casa de la Cultura San Vicente</title>
+    <title><center>Listado de Talleristas</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="tablas_css/bootstrap/css/bootstrap.min.css">
