@@ -27,7 +27,7 @@
 
         </div>
         <input type="button" value="Verificar" id="contra" class="button">
-        <p> <a class="link" href="registrarcontra.html"> CANCELAR</a></p>
+        <p> <a class="link" href="logininicio.php"> CANCELAR</a></p>
         </div>
     </form>
     <script src="../tablas_css/jquery/jquery-3.3.1.min.js"></script>

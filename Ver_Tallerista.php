@@ -11,12 +11,11 @@ $con = conectar();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="#" />
+    <link rel="shortcut icon" href="./images/img_casacultura/logo.png" />
 
-   <!-- <img src="ProyectoCultura\images\img_casacultura/logo.png" width="100"
-     height="50">-->
-    <title><center>Casa de la Cultura San Vicente</title>
-    <title><center>Listado de Talleristas</title>
+  
+    <title>Casa de la Cultura San Vicente</title>
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="tablas_css/bootstrap/css/bootstrap.min.css">
@@ -58,6 +57,11 @@ $con = conectar();
         <a href="http://localhost/ProyectoCultura/menu_administrador.php" class="btn btn-primary">
             <h4> Volver al Menú </h4>
         </a>
+            <br>
+        <a href="./reporte_tallerista.php" class="btn btn-info">
+        <i class="fa fa-print"></i> 
+        </a>
+
         <br>
 
         <div class="row">
@@ -139,15 +143,11 @@ $con = conectar();
     <!-- datatables JS -->
     <script type="text/javascript" src="tablas_css/datatables/datatables.min.js"></script>
 
-    <!-- para usar botones en datatables JS -->
-    <script src="tablas_css/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
-    <script src="tablas_css/datatables/JSZip-2.5.0/jszip.min.js"></script>
-    <script src="tablas_css/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-    <script src="tablas_css/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="tablas_css/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+   
+    
 
     <!-- código JS propìo-->
-    <script type="text/javascript" src="tablas_css/main.js"></script>
+    <script type="text/javascript" src="tablas_css/tallerista.main.js"></script>
     <!--PARA LAS ALERTAS-->
     <script src="./vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 
