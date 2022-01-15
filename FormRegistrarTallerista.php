@@ -6,6 +6,9 @@ if($_SESSION['empleado'] ==''){
     header("Location:index.php");
 }
 
+$_var=$_SESSION['user_name'];
+$fechaActual = date('Y-m-d H:i:s');
+echo $fechaActual;
 include("con_db.php");
 $con = conectar();
 
@@ -50,6 +53,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                     <form class="popup-form" action="" method="POST" id="contactForm" name="contactform" data-toggle="validator">
                                         <div class="row">
                                             <div id="msgContactSubmit" class="hidden"></div>
+                                            
 
                                             <div class="col-md-6">
                                                 <label>Nombre</label>
@@ -234,7 +238,10 @@ include_once("./Plantilla/menuAdministrador.php");
      $query = "INSERT INTO tb_talleristas(dui_tallerista, nombre_tallerista,apellido_tallerista,sexo_tallerista,fecha_nacimiento_tallerista,fecha_contrato_tallerista,direccion_tallerista,
       id_canton ,telefono) VALUES ('$dui','$nombre','$apellido','$sexo','$fecha_n','$fecha_c','$direccion','$idcanton','$telefono')";
      $resultado = mysqli_query($conex, $query);
-   
+     //$fechaActual = new date('d-m-Y H:i:s');
+     
+     $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha insertado un registro','tb_talleristas','$fechaActual','$nombre','$_var')";
+     mysqli_query($conex, $query2);
      if (!$resultado) {
       // die("Este DUI ya está siendo ocupado!");
      }
