@@ -1,4 +1,11 @@
 <?php
+session_start();
+if($_SESSION['empleado'] ==''){
+    header("Location:index.php");
+}
+
+$_var=$_SESSION['user_name'];
+$fechaActual = date('Y-m-d H:i:s');
 include("conexion.php");
 $con = conectar();
 
@@ -170,7 +177,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                                 <input type="submit" name="update" value="Actualizar" class="btn btn-custom" class="fa fa-save">
                                                 <!--	<button type="submit" id="submit" class="btn btn-custom"><em class="fa fa-save"></em> Registrar</button>-->
                                                 <!-- <button type="reset" id="reset" class="btn btn-custom"><em class="fa fa-ban"></em>Cancelar</a></button> -->
-                                                <a href="http://localhost/VersionDF/Ver_Tallerista.php" class="btn btn-custom">
+                                                <a href="http://localhost/ProyectoCultura/Ver_Tallerista.php" class="btn btn-custom">
                                                     <h6> Cancelar </h6>
                                                 </a>
                                             </div><!-- end form-group -->
@@ -250,6 +257,9 @@ if (isset($_POST['update'])) {
 
     $sql = "UPDATE tb_talleristas SET dui_tallerista ='$dui',nombre_tallerista ='$nombret',apellido_tallerista ='$apellidot',sexo_tallerista ='$sexot' ,fecha_nacimiento_tallerista ='$f_n' ,fecha_contrato_tallerista ='$f_c' ,direccion_tallerista ='$direc',id_canton ='$idcanton',telefono ='$telefono' WHERE dui_tallerista='$dui'";
     $resutado = mysqli_query($con, $sql);
+    //consulta para insertar a la tabla bitacora
+    $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha modificado un registro','tb_talleristas','$fechaActual',concat('Registro Actualizado a','$nombret'),'$_var')";
+    mysqli_query($con, $query2);
     if ($resultado) {
         // die("Este DUI ya está siendo ocupado!");
         echo '<script>

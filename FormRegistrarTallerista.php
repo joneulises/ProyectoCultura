@@ -8,7 +8,7 @@ if($_SESSION['empleado'] ==''){
 
 $_var=$_SESSION['user_name'];
 $fechaActual = date('Y-m-d H:i:s');
-echo $fechaActual;
+//echo $fechaActual;
 include("con_db.php");
 $con = conectar();
 
@@ -238,7 +238,7 @@ include_once("./Plantilla/menuAdministrador.php");
      $query = "INSERT INTO tb_talleristas(dui_tallerista, nombre_tallerista,apellido_tallerista,sexo_tallerista,fecha_nacimiento_tallerista,fecha_contrato_tallerista,direccion_tallerista,
       id_canton ,telefono) VALUES ('$dui','$nombre','$apellido','$sexo','$fecha_n','$fecha_c','$direccion','$idcanton','$telefono')";
      $resultado = mysqli_query($conex, $query);
-     //$fechaActual = new date('d-m-Y H:i:s');
+    //consulta para insertar a la tabla bitacora
      
      $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha insertado un registro','tb_talleristas','$fechaActual','$nombre','$_var')";
      mysqli_query($conex, $query2);

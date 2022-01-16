@@ -4,6 +4,9 @@ session_start();
 if($_SESSION['empleado'] ==''){
     header("Location:index.php");
 }
+$_var=$_SESSION['user_name'];
+$fechaActual = date('Y-m-d H:i:s');
+
 include("con_db.php");
 $con = conectar();
 
@@ -173,6 +176,10 @@ if (isset($_POST['update'])) {
 
     $sql = "UPDATE tb_usuario SET user ='$user',correo ='$correo' WHERE dui_tallerista='$dui'";
     $resutado = mysqli_query($con, $sql);
+
+    //consulta para insertar a la tabla bitacora
+    $sql2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha modificado un registro','tb_usuario','$fechaActual',concat('Registro Actualizado a','$user'),'$_var')";
+    mysqli_query($con, $sql2);
     if ($resultado) {
         // die("Este DUI ya está siendo ocupado!");
         echo '<script>

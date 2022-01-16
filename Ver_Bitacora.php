@@ -15,8 +15,8 @@ $con = conectar();
 
    <!-- <img src="ProyectoCultura\images\img_casacultura/logo.png" width="100"
      height="50">-->
-    <title><center>Casa de la Cultura San Vicente</title>
-    <title><center>Historial de Bitácora</title>
+    <title>Casa de la Cultura San Vicente</title>
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="tablas_css/bootstrap/css/bootstrap.min.css">

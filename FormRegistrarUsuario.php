@@ -4,6 +4,8 @@ session_start();
 if($_SESSION['empleado'] ==''){
     header("Location:index.php");
 }
+$_var=$_SESSION['user_name'];
+$fechaActual = date('Y-m-d H:i:s');
 
 
 include("con_db.php");
@@ -305,10 +307,17 @@ if (isset($_POST['registrar'])) {
 
             $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_empleado,correo,estado) VALUES ('$user','$clave','$tipo','$dui_empleado','$correo','$estado')";
             $resultado = mysqli_query($conex, $query);
+            // consulta para insertar en bitacora
+            $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha insertado un registro','tb_talleristas','$fechaActual','$user','$_var')";
+             mysqli_query($conex, $query2);
         } else {
 
             $query = "INSERT INTO tb_usuario(user, pass,tipo,dui_tallerista,correo,estado) VALUES ('$user','$clave','$tipo','$dui_tallerista','$correo','$estado')";
             $resultado = mysqli_query($conex, $query);
+
+            // consulta para insertar en bitacora
+            $query3 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha insertado un registro','tb_usuario','$fechaActual','$user','$_var')";
+             mysqli_query($conex, $query3);
         }
 
         if ($resultado) {

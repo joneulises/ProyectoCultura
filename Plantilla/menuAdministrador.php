@@ -212,7 +212,7 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-time"></i><span class="nav-text">Bitacora</span></a>
                     <ul aria-expanded="false">
 
-                        <li><a href="#">Ver bitacora</a></li>
+                        <li><a href="./Ver_Bitacora.php">Ver bitácora</a></li>
                     </ul>
                 </li>
 

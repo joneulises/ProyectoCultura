@@ -1,4 +1,13 @@
 <?php
+session_start();
+if($_SESSION['empleado'] ==''){
+    header("Location:index.php");
+}
+
+
+$_var=$_SESSION['user_name'];
+$fechaActual = date('Y-m-d H:i:s');
+
 include("conexion.php");
 $con = conectar();
 
@@ -258,6 +267,10 @@ if(isset($_POST['update'])) {
 
     $sql="UPDATE tb_horarios SET id_horario ='$id',dia ='$dia',hora_inicio ='$hi',hora_fin ='$hf' ,id_sala ='$idsala' ,id_taller ='$idtaller' ,id_tallerista ='$idtallerista' WHERE id_horario ='$id'";
     $resultado = mysqli_query($con, $sql);
+
+    //consulta para insertar a la tabla bitacora
+    $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha modificado un registro','tb_talleristas','$fechaActual',concat('Registro Actualizado a','$dia'),'$_var')";
+    mysqli_query($con, $query2);
 
     if ($resultado) {
         

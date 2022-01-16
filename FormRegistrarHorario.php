@@ -4,6 +4,9 @@ session_start();
 if($_SESSION['empleado'] ==''){
     header("Location:index.php");
 }
+$_var=$_SESSION['user_name'];
+$fechaActual = date('Y-m-d H:i:s');
+
 include("con_db.php");
 $con = conectar();
 
@@ -223,7 +226,7 @@ include_once("./Plantilla/menuAdministrador.php");
  //TODO EL CODIGO PARA GUARDAR
      if (isset($_POST['registrar'])){
   
- 
+   
     $dia = $_POST['dia'];
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fin = $_POST['hora_fin'];
@@ -234,6 +237,11 @@ include_once("./Plantilla/menuAdministrador.php");
  
     $query = "INSERT INTO tb_horarios(dia, hora_inicio, hora_fin, id_sala, id_taller, id_tallerista) VALUES ('$dia','$hora_inicio','$hora_fin','$idsala','$idtaller','$idtallerista')";
     $resultado = mysqli_query($conex,$query);
+
+    //consulta para insertar a la tabla bitacora
+     
+    $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha insertado un registro','tb_horarios','$fechaActual','$dia','$_var')";
+    mysqli_query($conex, $query2);
     
 
     echo '<script>
