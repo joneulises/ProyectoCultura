@@ -175,7 +175,7 @@ if($_SESSION['tallerista'] ==''){
                      <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-apps"></i><span class="nav-text">Horario</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Ver horarios</a></li>
+                            <li><a href="./Ver_HorarioTallerista.php">Ver horarios</a></li>
                         </ul>
                     </li>
 
