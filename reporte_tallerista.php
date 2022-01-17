@@ -52,7 +52,7 @@ class PDF extends FPDF {
 //****************************fin de la plantilla encabezado.******************
 $reporte = mysqli_query($con, "SELECT * FROM `tb_talleristas` INNER JOIN tb_cantones ON tb_talleristas.id_canton=tb_cantones.id_canton ");
 
-$pdf = new PDF('L','mm','A4');//tamano oficio horizontal PDF()= carta vertical
+$pdf = new PDF('L','mm','Legal');//tamano oficio horizontal PDF()= carta vertical
 $pdf->AliasNbPages();
 $pdf->AddPage();
 //Para los grados
