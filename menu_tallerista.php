@@ -1,3 +1,12 @@
+<?php
+session_start();
+if($_SESSION['tallerista'] ==''){
+    header("Location:index.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +96,7 @@
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
-                    <h4 class="text-dark font-weight-bold mb-0">Perfil Administrador</h4>
+                    <h4 class="text-dark font-weight-bold mb-0">Perfil Tallerista</h4>
                         <div class="header-left">
                             
                         </div>
@@ -96,9 +105,9 @@
                             
                            <li class="nav-item dropdown">
                                 <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="images/img_casacultura/Mperfil.jfif" width="60" height="60" class="img-fluid rounded-circle avatar mr-2"
+                                    <img src="images/img_casacultura/usuario.png" width="60" height="60" class="img-fluid rounded-circle avatar mr-2"
                       alt="https://generated.photos/" />
-                                    Karla Romero
+                      <?php echo $_SESSION['user_name'];?>           
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Mi perfil</a>
