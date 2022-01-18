@@ -63,7 +63,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="images/img_casacultura/Mperfil.jfif" width="60" height="60" class="img-fluid rounded-circle avatar mr-2" alt="https://generated.photos/" />
+                                <img src="images/img_casacultura/usuario.png" width="60" height="60" class="img-fluid rounded-circle avatar mr-2" alt="https://generated.photos/" />
                                 <?php echo $_SESSION['user_name'];?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
