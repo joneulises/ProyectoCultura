@@ -7,6 +7,7 @@ if($_SESSION['empleado'] ==''){
 }
 
 $_var=$_SESSION['user_name'];
+date_default_timezone_set('America/El_Salvador');
 $fechaActual = date('Y-m-d H:i:s');
 //echo $fechaActual;
 include("con_db.php");

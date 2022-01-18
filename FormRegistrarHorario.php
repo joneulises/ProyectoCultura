@@ -5,6 +5,7 @@ if($_SESSION['empleado'] ==''){
     header("Location:index.php");
 }
 $_var=$_SESSION['user_name'];
+date_default_timezone_set('America/El_Salvador');
 $fechaActual = date('Y-m-d H:i:s');
 
 include("con_db.php");
