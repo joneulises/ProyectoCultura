@@ -36,7 +36,7 @@
 					<div class="submenu-items">
 							
 							<ul>
-								<li><a href="./Login/logininicio.php">Iniciar Sessión</a></li>
+								<li><a href="./Login/logininicio.php">Iniciar Sesión</a></li>
 	
 							</ul>
 						</div>
