@@ -67,7 +67,7 @@ $pdf->Cell(35, 6, 'NOMBRE',       1, 0, 'C', 1);
 $pdf->Cell(35, 6, 'APELLIDO',     1, 0, 'C', 1);
 $pdf->Cell(24, 6, 'GENERO',       1, 0, 'C', 1);
 $pdf->Cell(35, 6, utf8_decode('CONTRATACIÓN'), 1, 0, 'C', 1);
-$pdf->Cell(50, 6, utf8_decode('DIRECCIÓN'),  1, 0, 'C', 1);
+$pdf->Cell(70, 6, utf8_decode('DIRECCIÓN'),  1, 0, 'C', 1);
 $pdf->Cell(25, 6,utf8_decode( 'TELÉFONO'),  1, 0, 'C', 1);
 $pdf->Cell(30, 6, utf8_decode('CANTÓN'), 1, 1, 'C', 1);
 
@@ -81,7 +81,7 @@ while ($row = $reporte->fetch_assoc()) {
     $pdf->Cell(35, 6, $row['apellido_tallerista'], 1, 0, 'C');
     $pdf->Cell(24, 6, $row['sexo_tallerista'], 1, 0, 'C');
     $pdf->Cell(35, 6, $row['fecha_contrato_tallerista'], 1, 0, 'C');
-    $pdf->Cell(50, 6, $row['direccion_tallerista'], 1, 0, 'C');
+    $pdf->Cell(70, 6, $row['direccion_tallerista'], 1, 0, 'C');
     $pdf->Cell(25, 6, $row['telefono'], 1, 0, 'C');
     $pdf->Cell(30, 6, utf8_decode($row['nombre_canton']), 1, 1, 'C');
     ;
