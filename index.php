@@ -42,7 +42,22 @@
 						</div>
 						</div>
 				</li>
-				<li><a href="#">acerca de <span class="icon icon-up-dir"></span></a></li>
+				<li>
+					<a href="#">acerca de <span class="icon icon-up-dir"></span></a>
+					<div class="submenu">
+					<div class="submenu-items">
+							
+							<ul>
+							    <li><a href="#"></a>correo: secsanvicente@gmail.com</li>
+							<li><a href="#"></a>Tel: 2393-1179</li>
+								<li><a href="#">calle 1° de julio #33, Bo. San Francisco, dos casas abajo de Funerales Vida Eterna, San Vicente, El Salvador</a></li>
+								
+	
+							</ul>
+						</div>
+						</div>
+			
+			    </li>
 			</ul>
 		</nav>
 	</div>
