@@ -239,8 +239,8 @@ if($_SESSION['empleado'] ==''){
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-paper"></i><span class="nav-text">Eventos</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Registrar evento</a></li>
-                            <li><a href="#">Ver eventos</a></li>
+                            <li><a href="./FormRegistrarEvento.php">Registrar evento</a></li>
+                            <li><a href="./Ver_evento.php">Ver eventos</a></li>
                         </ul>
                     </li>
 
