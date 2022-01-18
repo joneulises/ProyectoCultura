@@ -34,11 +34,10 @@
 					<a href="#">Login <span class="icon icon-up-dir"></span></a>
 					<div class="submenu">
 					<div class="submenu-items">
-							<p>Menus</p>
+							
 							<ul>
-								<li><a href="./Login/logininicio.php">Administrador</a></li>
-								<li><a href="./Login/logininicio.php">Empleado</a></li>
-								<li><a href="./Login/logininicio.php">Tallerista</a></li>
+								<li><a href="./Login/logininicio.php">Iniciar Sesión</a></li>
+	
 							</ul>
 						</div>
 						</div>

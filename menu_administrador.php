@@ -270,6 +270,14 @@ if($_SESSION['empleado'] ==''){
                         </ul>
                     </li>
 
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="ion ion-md-help"></i><span class="nav-text">Ayuda</span></a>
+                        <ul aria-expanded="false">
+                        
+                            <li><a href="./Ayuda/ManualUsuarioSiawget.docx">Ver</a></li>
+                        </ul>
+                    </li>
+
                    
                 </ul>
             </div>
