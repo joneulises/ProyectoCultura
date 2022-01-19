@@ -102,12 +102,15 @@
                 <!--Boton de Empleado desplegable-->
 
 
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-woman"></i><span class="nav-text">Empleado</span></a>
-                    <ul aria-expanded="false">
-                        <li><a href="#">Registrar Empleado</a></li>
-                        <li><a href="#">Ver Empleado</a></li>
-                    </ul>
-                </li>
+                
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon ion-md-woman"></i><span class="nav-text">Empleado</span></a>
+                        <ul aria-expanded="false">
+                             <li><a href="FormRegistrarEmpleado.php">Registrar Empleado</a></li>
+                            <li><a href="Ver_Empleado.php">Ver Empleado</a></li>
+                        </ul>
+                    </li>
+
 
 
                 <!--Boton de Registrar Tallerista desplegable-->
@@ -173,28 +176,30 @@
                 <!--Boton de Donaciones desplegable-->
 
 
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-cash"></i><span class="nav-text">Donaciones</span></a>
-                    <ul aria-expanded="false">
-                        <li><a href="#">Registrar donación</a></li>
-                        <li><a href="#">Ver donaciones</a></li>
-                    </ul>
-                </li>
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon ion-md-cash"></i><span class="nav-text">Donaciones</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./FormRegistrarDonacion.php">Registrar donación</a></li>
+                            <li><a href="./Ver_Donacion.php">Ver donaciones</a></li>
+                        </ul>
+                    </li>
 
 
 
-                <!--Boton de Eventos desplegable-->
+                     <!--Boton de Eventos desplegable-->
 
 
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-paper"></i><span class="nav-text">Eventos</span></a>
-                    <ul aria-expanded="false">
-                        <li><a href="#">Registrar evento</a></li>
-                        <li><a href="#">Ver eventos</a></li>
-                    </ul>
-                </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon ion-md-paper"></i><span class="nav-text">Eventos</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./FormRegistrarEvento.php">Registrar evento</a></li>
+                            <li><a href="./Ver_evento.php">Ver eventos</a></li>
+                        </ul>
+                    </li>
 
 
 
-                <!--Boton de Salas desplegable-->
+                     <!--Boton de Salas desplegable-->
 
 
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-easel"></i><span class="nav-text">Salas</span></a>
