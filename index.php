@@ -42,7 +42,22 @@
 						</div>
 						</div>
 				</li>
-				<li><a href="#">acerca de <span class="icon icon-up-dir"></span></a></li>
+				<li>
+					<a href="#">acerca de <span class="icon icon-up-dir"></span></a>
+					<div class="submenu">
+					<div class="submenu-items">
+							
+							<ul>
+							    <li><a href="#"></a>correo: secsanvicente@gmail.com</li>
+							<li><a href="#"></a>Tel: 2393-1179</li>
+								<li><a href="#">calle 1° de julio #33, Bo. San Francisco, dos casas abajo de Funerales Vida Eterna, San Vicente, El Salvador</a></li>
+								
+	
+							</ul>
+						</div>
+						</div>
+			
+			    </li>
 			</ul>
 		</nav>
 	</div>
@@ -52,20 +67,20 @@
 			<li id="slide1">
 				<img src="img/arte.jpg" />
 			</li>
-			<li id="slide2">
-				<img src="img/fondo.jpg" />
+			<li id="slide2" >
+				<img src="img/03.jpg" width="50" height="250"   />
 			</li>
 			<li id="slide3">
-				<img src="img/IMG-20191018-WA0081.jpg" />
+				<img src="img/04.jpg"   width="50" height="100"/>
 			</li>
 			<li id="slide4">
-				<img src="img/34047309_186080115556636_1464322232888066048_n.jpg" />
+				<img src="img/02.jpg" />
 			</li>
 			<li id="slide5">
-				<img src="img/61775665_2239863779435373_590636218849427456_n.jpg" />
+				<img src="img/05.jpg" />
 			</li>
 			<li id="slide6">
-				<img src="img/62102175_2239860416102376_261649394787418112_n.jpg" />
+				<img src="img/06.jpg" />
 			</li>
 		</ul>
 		<ul class="menu-carrusel">
@@ -118,7 +133,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="footer-top col-sm-12">
-					<p class="text-center copyright">copyright &copy; 2021 <a href="https://obedalvarado.pw/blog/" class="footer-site-link">UES FMP</a></p>
+					<p class="text-center copyright">copyright &copy; 2021 <a href="http://secretariageneral.ues.edu.sv/index.php?option=com_content&view=article&id=124&Itemid=145" class="footer-site-link">UES FMP</a></p>
 				</div><!-- end col -->
 			</div><!-- end row -->
 		</div>

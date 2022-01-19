@@ -56,7 +56,7 @@ if (isset($_POST['btnregistrar'])) {
     echo $ape_res;
     echo $parentesco;
 
-    $sqltabla1 = "INSERT INTO `tb_responsable`(`id_responsable`,`nombre_responsable`, `apellido_responsable`, `parentesco`) VALUES ('$numero_aleatorio','$nombre_res','$ape_res','$parentesco')";
+    $sqltabla1 = "INSERT INTO `tb_responsable`(`id_responsable`,`nombre_responsable`, `apellido_responsable`, `parentesco`, telefono) VALUES ('$numero_aleatorio','$nombre_res','$ape_res','$parentesco','$numero_res')";
     $resultado = mysqli_query($conex, $sqltabla1);
 
     if ($resultado == 1) {
@@ -66,7 +66,7 @@ if (isset($_POST['btnregistrar'])) {
 
         <?php
 
-        $sqltabla2 = "INSERT INTO `tb_alumnos`(`id_alumno`,`nombre_alumno`, `apellido_alumno`, `fecha_nacimiento_alumno`, `sexo_alumno`, `zona_alumno`, `id_canton`, `direccion_alumno`) VALUES ('$numero_aleatorio','$nombre_alumno','$apellido_alumno','$fecha_alumno','$sexo_alumno','$zona_alumno','$canton_alumno','$direccion_alumno')";
+        $sqltabla2 = "INSERT INTO `tb_alumnos`(`id_alumno`,`nombre_alumno`, `apellido_alumno`, `fecha_nacimiento_alumno`, `sexo_alumno`, `zona_alumno`, `id_canton`, `direccion_alumno`, id_responsablre, telefono) VALUES ('$numero_aleatorio','$nombre_alumno','$apellido_alumno','$fecha_alumno','$sexo_alumno','$zona_alumno','$canton_alumno','$direccion_alumno','$numero_aleatorio','$telefono_alumno')";
         $resul = mysqli_query($conex, $sqltabla2);
 
 
@@ -74,8 +74,41 @@ if (isset($_POST['btnregistrar'])) {
         ?>
             <h3 class="ok">¡Se guardo el Alumno correctamente!</h3>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+ 
+    
+</head>
+ 
+<body>
+
+            <form name="miformulario" action="comprobante.php" method="POST">
+
+                <input type="text" name="nombre_res" value= "<?php echo $_POST['nombre_res']?>" >
+                <input type="text" name="apellido_res" value= "<?php echo $_POST['apellido_res']?>" >
+                <input type="text" name="parentesco" value= "<?php echo $_POST['parentesco']?>" >
+                <input type="text" name="telefono_res" value="<?php echo $_POST['telefono_res']?>" >
+
+                <input type="text" name="nombre" value="<?php echo $_POST['nombre']?>" >
+                <input type="text" name="apellido" value="<?php echo $_POST['apellido']?>" >
+                <input type="text" name="fechanac" value="<?php echo $_POST['fechanac']?>" >
+                <input type="text" name="municipio" value="<?php echo $_POST['municipio']?>" >
+                <input type="text" name="sexo" value="<?php echo $_POST['sexo']?>" >
+                <input type="text" name="canton" value="<?php echo $_POST['canton']?>" >
+                <input type="text" name="direccion" value="<?php echo $_POST['direccion']?>" >
+                <input type="text" name="phone" value="<?php echo $_POST['phone']?>" >
+                <input type="text" name="taller" value="<?php echo $_POST['taller']?>">
+                
+            </form>
+            <a href="">PACO SE LA COME</a>
+            
+            </body>
+</html>
+
         <?php
-            header("location:index.php");
+        
         }
     } else {
         ?>
