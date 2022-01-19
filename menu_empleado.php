@@ -225,8 +225,8 @@ if($_SESSION['empleado'] ==''){
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-cash"></i><span class="nav-text">Donaciones</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Registrar donación</a></li>
-                            <li><a href="#">Ver donaciones</a></li>
+                            <li><a href="./FormRegistrarDonacion.php">Registrar donación</a></li>
+                            <li><a href="./Ver_Donacion.php">Ver donaciones</a></li>
                         </ul>
                     </li>
 
@@ -238,8 +238,8 @@ if($_SESSION['empleado'] ==''){
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-paper"></i><span class="nav-text">Eventos</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Registrar evento</a></li>
-                            <li><a href="#">Ver eventos</a></li>
+                            <li><a href="./FormRegistrarEvento.php">Registrar evento</a></li>
+                            <li><a href="./Ver_evento.php">Ver eventos</a></li>
                         </ul>
                     </li>
 
