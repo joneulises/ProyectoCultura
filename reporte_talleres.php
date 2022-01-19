@@ -22,7 +22,7 @@ class PDF extends FPDF {
         $this->Cell(250, 10, 'Casa de la Cultura San Vicente', 0, 0, 'C');
         $this->Ln(10);
         $this->Cell(30);
-        $this->Cell(250, 10, 'Tálleres Disponibles', 0, 0, 'C');
+        $this->Cell(250, 10, utf8_decode('Tálleres Disponibles'), 0, 0, 'C');
 
  
         $this->SetDrawColor(0, 80, 180);
