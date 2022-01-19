@@ -52,7 +52,7 @@ class PDF extends FPDF {
 //****************************fin de la plantilla encabezado.******************
 $reporte = mysqli_query($con, "SELECT
 tb_eventos.nombre_evento, 
-tb_eventos.fecha_evento, 
+DATE_FORMAT(tb_eventos.fecha_evento,'%d/%m/%y') AS fecha, 
 tb_eventos.hora_evento, 
 tb_eventos.direccion_evento, 
 tb_cantones.nombre_canton
@@ -87,7 +87,7 @@ $pdf->SetFont('Arial', '', 10);
 
 while ($row = $reporte->fetch_assoc()) {
     $pdf->Cell(75, 6,$row['nombre_evento'], 1, 0, 'C');
-    $pdf->Cell(60, 6, $row['fecha_evento'], 1, 0, 'C');
+    $pdf->Cell(60, 6, $row['fecha'], 1, 0, 'C');
     $pdf->Cell(40, 6, $row['hora_evento'], 1, 0, 'C');
     $pdf->Cell(65, 6, $row['nombre_canton'], 1, 0, 'C');
     $pdf->Cell(80, 6, $row['direccion_evento'], 1, 1, 'C');
