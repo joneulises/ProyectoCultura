@@ -84,7 +84,7 @@ include_once("./Plantilla/menuAdministrador.php");
                                             <div class="col-md-6">
                                                 <label class="control-label">Género</label>
                                                 <div class="form-group">
-                                                    <select name="sexo_tallerista" class="form-control">
+                                                    <select name="sexo" class="form-control">
                                                         <option selected>Seleccioné...</option>
                                                         <option value="F">Femenino</option>
                                                         <option value="M">Masculino</option>
@@ -218,7 +218,7 @@ include_once("./Plantilla/menuAdministrador.php");
      $dui = $_POST['dui'];
      $nombre = $_POST['nombre'];
      $apellido = $_POST['apellido'];
-     $sexo = $_POST['sexo_tallerista'];
+     $sexo = $_POST['sexo'];
      $fecha_n = $_POST['fecha_n'];
      $fecha_c = $_POST['fecha_c'];
      $direccion = $_POST['direccion'];
@@ -226,7 +226,7 @@ include_once("./Plantilla/menuAdministrador.php");
      $telefono = $_POST['telefono'];
      //$estado='activo';
 
-     $sql = "SELECT *  FROM tb_talleristas where dui_tallerista=$dui";
+     $sql = "SELECT *  FROM tb_empleados where dui_empleado=$dui";
      $validacion = mysqli_query($con, $sql);
 
      if(mysqli_num_rows($validacion)>0){
@@ -236,12 +236,12 @@ include_once("./Plantilla/menuAdministrador.php");
 
      }else{
 
-     $query = "INSERT INTO tb_talleristas(dui_tallerista, nombre_tallerista,apellido_tallerista,sexo_tallerista,fecha_nacimiento_tallerista,fecha_contrato_tallerista,direccion_tallerista,
+     $query = "INSERT INTO tb_empleados(dui_empleado, nombre_empleado,apellido_empleado,sexo_empleado,fecha_nacimiento_empleado,fecha_contrato_empleado,direccion_empleado,
       id_canton ,telefono) VALUES ('$dui','$nombre','$apellido','$sexo','$fecha_n','$fecha_c','$direccion','$idcanton','$telefono')";
      $resultado = mysqli_query($conex, $query);
     //consulta para insertar a la tabla bitacora
      
-     $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha insertado un registro','tb_talleristas','$fechaActual','$nombre','$_var')";
+     $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha insertado un registro','tb_empleados','$fechaActual','$nombre','$_var')";
      mysqli_query($conex, $query2);
      if (!$resultado) {
       // die("Este DUI ya está siendo ocupado!");
@@ -258,7 +258,7 @@ include_once("./Plantilla/menuAdministrador.php");
            closeOnConfirm: false
        },
        function () {
-        window.location ="Ver_Tallerista.php";
+        window.location ="Ver_Empleado.php";
        });</script>';*/
 
        echo '<script>
