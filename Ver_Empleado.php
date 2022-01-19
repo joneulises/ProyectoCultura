@@ -11,8 +11,11 @@ $con = conectar();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="#" />
-    <title>Casa de la cultura</title>
+    <link rel="shortcut icon" href="./images/img_casacultura/logo.png" />
+
+  
+    <title>Casa de la Cultura San Vicente</title>
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="tablas_css/bootstrap/css/bootstrap.min.css">
@@ -27,24 +30,25 @@ $con = conectar();
 
     <!--font awesome con CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    
     <!--ALERTAS PARA EL SISTEMA-->
     <link rel="stylesheet" href="./vendor/sweetalert2/dist/sweetalert2.min.css">
-
 </head>
+
+
 
 
 <body>
     <header>
         <h2 class="text-center text-light">Casa de la cultura</h2>
-        <h2 class="text-center text-light">Listado de Eventos</h2>
+        <h2 class="text-center text-light">Listado de Empleados</h2>
+
     </header>
+
     <div style="height:50px"></div>
-   
-    
+
     <!--Ejemplo tabla con DataTables-->
     <div class="container">
-    <?php if (isset($_SESSION['message'])) { ?>
+        <?php if (isset($_SESSION['message'])) { ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <?= $_SESSION['message'] ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -53,71 +57,74 @@ $con = conectar();
         <a href="./menu_administrador.php" class="btn btn-primary">
             <h4> Volver al Menú </h4>
         </a>
-        <a href="./FormRegistrarEvento.php" class="btn btn-primary">
-            <h4> Nuevo Evento </h4>
+        <a href="./FormRegistrarEmpleado.php" class="btn btn-primary">
+            <h4> Registrar Empleado </h4>
         </a>
             <br>
         <a href="./reporte_tallerista.php" class="btn btn-info">
         <i class="fa fa-print"></i> 
         </a>
-      
+
         <br>
 
         <div class="row">
             <div class="col-lg-12">
+
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>Nombre de Evento</th>
-                                <th>Fecha de Evento</th>
-                                <th>Hora de Evento</th>
-                                <th>Localidad</th>
-                                <th>Direccion de evento</th>
+                                <th>Dui</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Fecha Nácimiento</th>
+                                <th>Fecha Contrato</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Cantón</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
-                                
-                    
-                               
-                                
-                                
+
+
                             </tr>
                         </thead>
                         <tbody>
-                        <?php
-                                         $sql="SELECT
+                            <?php
+                            $sql = "SELECT
                                          c.nombre_canton, 
-                                         t.id_evento, 
-                                         t.nombre_evento,                                          
-                                         DATE_FORMAT(t.fecha_evento,'%d/%m/%y') AS fecha_evento,                                         
-                                         t.hora_evento,
-                                         t.direccion_evento
+                                         t.dui_empleado, 
+                                         t.nombre_empleado, 
+                                         t.apellido_empleado, 
+                                         DATE_FORMAT(t.fecha_nacimiento_empleado,'%d/%m/%y') AS fecha_nacimiento_empleado, 
+                                         DATE_FORMAT(t.fecha_contrato_empleado,'%d/%m/%y') AS fecha_contrato_empleado, 
+                                         t.direccion_empleado, 
+                                         t.telefono
                                      FROM
-                                         tb_eventos AS t
+                                         tb_empleados AS t
                                          INNER JOIN
                                          tb_cantones AS c
                                          ON 
-                                             t.id_canton = c.id_canton ";
-                                         $query=mysqli_query($con,$sql);
-                                     
-                                        
-                                            while($row=mysqli_fetch_array($query)){
-                                        ?>
-                                            <tr>
-                                                <td><?php  echo $row['id_evento']?></td>
-                                                <td><?php  echo $row['nombre_evento']?></td>
-                                                <td><?php  echo $row['fecha_evento']?></td>
-                                                <td><?php  echo $row['hora_evento']?></td> 
-                                                <td><?php  echo $row['nombre_canton']?></td>
-                                                <td><?php  echo $row['direccion_evento']?></td>
-                                                     
-                                                <td><a href="FormActualizar_Evento.php?id=<?php echo $row['id_evento'] ?>" class="btn btn-info" >Editar</a></td>
-                                                <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_id" data-id="<?php echo $row['id_evento'] ?>">Eliminar</a></td>                                      
-                                            </tr>
-                                        <?php 
-                                            }
-                                        ?>
+                                             t.id_canton = c.id_canton";
+                            $query = mysqli_query($con, $sql);
+
+
+                            while ($row = mysqli_fetch_array($query)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $row['dui_empleado'] ?></td>
+                                    <td><?php echo $row['nombre_empleado'] ?></td>
+                                    <td><?php echo $row['apellido_empleado'] ?></td>
+                                    <td><?php echo $row['fecha_nacimiento_empleado'] ?></td>
+                                    <td><?php echo $row['fecha_contrato_empleado'] ?></td>
+                                    <td><?php echo $row['telefono'] ?></td>
+                                    <td><?php echo $row['direccion_empleado'] ?></td>
+                                    <td><?php echo $row['nombre_canton'] ?></td>
+                                    <td><a href="FormActualizar_Empleado.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar</a></td>
+                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_dui" data-id="<?php echo $row['dui_empleado'] ?>">Eliminar</a></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
 
 
 
@@ -139,34 +146,29 @@ $con = conectar();
     <!-- datatables JS -->
     <script type="text/javascript" src="tablas_css/datatables/datatables.min.js"></script>
 
-    <!-- para usar botones en datatables JS -->
-    <script src="tablas_css/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
-    <script src="tablas_css/datatables/JSZip-2.5.0/jszip.min.js"></script>
-    <script src="tablas_css/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-    <script src="tablas_css/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="tablas_css/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+   
+    
 
     <!-- código JS propìo-->
-    <script type="text/javascript" src="tablas_css/main.js"></script>
-
+    <script type="text/javascript" src="tablas_css/tallerista.main.js"></script>
     <!--PARA LAS ALERTAS-->
     <script src="./vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <script>
         $(document).ready(function() {
 
-            $(document).on('click', '#delete_id', function(e) {
+            $(document).on('click', '#delete_dui', function(e) {
                 //recogemos los datos
-                var id = $(this).data('id');
-              //  alert(id);
+                var dui = $(this).data('id');
+               // alert(dui);
                 //funcion que elimina
-                Delete(id);
+                Delete(dui);
                 e.preventDefault();
             });
 
         });
 
-        function Delete(id) {
+        function Delete(dui) {
 
             swal({
                 title: 'Estas seguro?',
@@ -182,9 +184,9 @@ $con = conectar();
                     return new Promise(function(resolve) {
                        // alert('entre');
                         $.ajax({
-                                url: 'Delete_Evento.php',
+                                url: 'Delete_Empleado.php',
                                 type: 'POST',
-                                data: 'delete=' +id,
+                                data: 'delete=' +dui,
                                 dataType: 'json'
                             })
                             .done(function(response) {
@@ -197,7 +199,7 @@ $con = conectar();
                                     closeOnConfirm: false
                                 }).then(function(result) {
                                     if (result.value) {
-                                        window.location = "Ver_evento.php";
+                                        window.location = "Ver_Empleado.php";
                                     }
                                 });
                             })
