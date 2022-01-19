@@ -79,12 +79,7 @@ if (isset($_POST['btnregistrar'])) {
 <head>
     <meta charset="utf-8">
  
-    <script>
-    window.onload=function(){
-                // Una vez cargada la página, el formulario se enviara automáticamente.
-		document.forms["miformulario"].submit();
-    }
-    </script>
+    
 </head>
  
 <body>
@@ -107,6 +102,7 @@ if (isset($_POST['btnregistrar'])) {
                 <input type="text" name="taller" value="<?php echo $_POST['taller']?>">
                 
             </form>
+            <a href="">PACO SE LA COME</a>
             
             </body>
 </html>

@@ -1,38 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
- 
-    <script>
-    window.location.replace("index.php");
-    </script>
-</head>
-</html>
 
 <?php
+require './con_db.php';
+$con = conectar();
 require('fpdf/fpdf.php');
-date_default_timezone_set('America/El_Salvador');
-// Creación del objeto de la clase heredada
-//
 
-    //Datos de Responsable 
-    $nombre_res = trim($_POST['nombre_res']);
-    $ape_res =  trim($_POST['apellido_res']);
-    $parentesco =  trim($_POST['parentesco']);
-    $numero_res = trim($_POST['telefono_res']);
-
-    //Datos de Alumno 
-
-    $nombre_alumno = trim($_POST['nombre']);
-    $apellido_alumno = trim($_POST['apellido']);
-    $fecha_alumno = $_REQUEST['fechanac'];
-    $municipio_alumno = trim($_POST['municipio']);
-    $sexo_alumno = trim($_POST['sexo']);
-    $zona_alumno = trim($_POST['canton']);
-    $canton_alumno = trim($_POST['canton']);
-    $direccion_alumno = trim($_POST['direccion']);
-    $telefono_alumno = trim($_POST['phone']);
-    $taller_alumno = trim($_POST['taller']);
 
 class PDF extends FPDF
 {
@@ -237,6 +208,10 @@ function NbLines($w,$txt)
     }
 }
 //------------------------------------------------------------------------------------------------
+$parametro=$_GET['co'];
+$re = mysqli_query($con, "SELECT * FROM `tb_alumnos` INNER JOIN tb_responsable ON tb_alumnos.id_responsablre=tb_responsable.id_responsable INNER JOIN tb_cantones ON tb_alumnos.id_canton=tb_cantones.id_canton INNER JOIN tb_municipios ON tb_cantones.id_municipio=tb_municipios.id_municipio  WHERE id_alumno='$parametro'");
+
+
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
@@ -248,61 +223,63 @@ $pdf->Cell(0, 4, 'INFORMACION PERSONAL', 0, 1, 'C', false);
 $pdf->Line(15, 40, 192, 40);
 $pdf->Ln(10);
 
+while ($row = $re->fetch_assoc()) {
+
+
 $pdf->SetX(10);
 $pdf->Cell(0, 4, 'NOMBRE: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, utf8_decode($nombre_alumno.' '.$apellido_alumno), 0, 1, 'L', false);
+$pdf->Cell(0, 4, utf8_decode($row['nombre_alumno'].' '.$row['apellido_alumno']), 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'FECHA DE NACIMIENTO: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $fecha_alumno, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['fecha_nacimiento_alumno'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'SEXO: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $sexo_alumno, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['sexo_alumno'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'MUNICIPIO: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $municipio_alumno, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['nombre_municipio'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'CANTON: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $canton_alumno, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['nombre_canton'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'DIRECCION: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $direccion_alumno, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['direccion_alumno'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'TELEFONO: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $telefono_alumno, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['telefono'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
-$pdf->SetX(10);
+/*$pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'TALLER: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(0, 4, $taller_alumno, 0, 1, 'L', false);
-$pdf->Ln(25);
-
+$pdf->Ln(25);*/
 
 $pdf->SetXY(20, 150);
 $pdf->SetFont('Arial', 'B', 12);
@@ -313,21 +290,23 @@ $pdf->Ln(10);
 $pdf->SetX(10);
 $pdf->Cell(0, 4, 'NOMBRE: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, utf8_decode($nombre_res. ' ' .$ape_res), 0, 1, 'L', false);
+$pdf->Cell(0, 4, utf8_decode($row['nombre_responsable']. ' ' .$row['apellido_responsable']), 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'PARENTESCO: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $parentesco, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['parentesco'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'TELEFONO: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $numero_res, 0, 1, 'L', false);
+$pdf->Cell(0, 4, $row['telefono'], 0, 1, 'L', false);
+
+}
 
 $pdf->Output('D','Comprobante de Inscripcion.pdf');
 ?>

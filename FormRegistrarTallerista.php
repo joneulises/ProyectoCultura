@@ -246,7 +246,7 @@ include_once("./Plantilla/menuAdministrador.php");
      if (!$resultado) {
       // die("Este DUI ya está siendo ocupado!");
      }
-   
+
      //probando alertas
    
      /*echo '<script>
