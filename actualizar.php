@@ -355,23 +355,7 @@ $row=mysqli_fetch_array($query);
     
     
     
-                                                             <!-- <div class="col-md-6 col-sm-4 col-xs-4">                                                          
-                                                          <h6 class="m-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seleccione tallerista</h6>                                                         
-                                                              
-                                                          <div class="form-group col-sm-6 col-lg-12">
-                                                              <div class="help-block with-errors"></div>
-                                                              <select id="" name="fselec_tallerista" class="form-control" required>
-                                                                  <option selected disabled value="opcion">-Seleccione  el tallerista-</option>
-                                                                  <option value="Jose David Morales">-Jose Dsvid Morales-</option>
-                                                                  <option value="Fatima Rosibel Castro">-Fatima Rosibel Castro-</option>
-                                                                  <option value="Marlon Enriquez Gomez">-Marlon Enriquez Gomez-</option>
-                                                                  <option value="Juan Carlos Monico">-Juan Carlos Monico-</option>
-                                                              </select>
-                                                              <div class="input-group-icon"><i class="fa fa-indent"></i></div>
-                                                              </div>
-                                                          </div> end form-group selecccionar tallerista -->
-    
-    
+                                                            
     
     
                                                           <div class=" col-md-6 col-sm-4 col-xs-4 ">

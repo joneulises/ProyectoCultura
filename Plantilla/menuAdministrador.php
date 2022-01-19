@@ -167,8 +167,8 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-brush"></i><span class="nav-text">Talleres</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./formTalleres.php">Registrar Taller</a></li>
-                            <li><a href="./prueba.php">Ver Taller</a></li>
+                            <li><a href="../FormRegistrarTaller.php">Registrar Taller</a></li>
+                            <li><a href="../Ver_Taller.php">Ver Taller</a></li>
                         </ul>
                     </li>
 
