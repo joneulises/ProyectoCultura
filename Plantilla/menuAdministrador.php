@@ -155,7 +155,7 @@
 
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon icon-single-04"></i><span class="nav-text">Alumnos</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="#">Ver lista de Alumnos</a></li>
+                        <li><a href="./tabla_registroAlumnos.php">Ver lista de Alumnos</a></li>
                     </ul>
                 </li>
 
@@ -205,8 +205,13 @@
 
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-easel"></i><span class="nav-text">Salas</span></a>
                     <ul aria-expanded="false">
+<<<<<<< HEAD
+                        <li><a href="formSalas.php">Registrar sala</a></li>
+                        <li><a href="tabla_salas.php">Ver salas</a></li>
+=======
                         <li><a href="../http://localhost/ProyectoCultura/formSalas.php">Registrar sala</a></li>
                         <li><a href="#">Ver salas</a></li>
+>>>>>>> 2df7f15be796832a04084682d099d2a6aac866eb
                     </ul>
                 </li>
 
@@ -221,6 +226,14 @@
                         <li><a href="./Ver_Bitacora.php">Ver bitácora</a></li>
                     </ul>
                 </li>
+
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="ion ion-md-help"></i><span class="nav-text">Ayuda</span></a>
+                        <ul aria-expanded="false">
+                        
+                            <li><a href="./Ayuda/ManualUsuarioSiawget.docx">Ver</a></li>
+                        </ul>
+                    </li>
 
 
             </ul>

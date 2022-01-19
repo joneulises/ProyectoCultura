@@ -57,7 +57,7 @@ $con = conectar();
             <h4> Nuevo Taller </h4>
         </a>
             <br>
-        <a href="./reporte_eventos.php" class="btn btn-info">
+        <a href="./reporte_talleres.php" class="btn btn-info">
         <i class="fa fa-print"></i> 
         </a>
       
