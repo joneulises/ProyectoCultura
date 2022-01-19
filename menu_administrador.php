@@ -148,8 +148,8 @@ if($_SESSION['empleado'] ==''){
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-woman"></i><span class="nav-text">Empleado</span></a>
                         <ul aria-expanded="false">
-                             <li><a href="FormRegistrarEmpleado.php">Registrar Empleado</a></li>
-                            <li><a href="Ver_Empleado.php">Ver Empleado</a></li>
+                             <li><a href="http://localhost/ProyectoCultura/FormRegistrarEmpleado.php">Registrar Empleado</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/Ver_Empleado.php">Ver Empleado</a></li>
                         </ul>
                     </li>
 
@@ -213,8 +213,8 @@ if($_SESSION['empleado'] ==''){
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-brush"></i><span class="nav-text">Talleres</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./formTalleres.php">Registrar Taller</a></li>
-                            <li><a href="./prueba.php">Ver Taller</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/FormRegistrarTaller.php">Registrar Taller</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/Ver_Taller.php">Ver Taller</a></li>
                         </ul>
                     </li>
 
@@ -239,8 +239,8 @@ if($_SESSION['empleado'] ==''){
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-paper"></i><span class="nav-text">Eventos</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./FormRegistrarEvento.php">Registrar evento</a></li>
-                            <li><a href="./Ver_evento.php">Ver eventos</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/FormRegistrarEvento.php">Registrar evento</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/Ver_evento.php">Ver eventos</a></li>
                         </ul>
                     </li>
 

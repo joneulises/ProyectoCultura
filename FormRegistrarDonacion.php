@@ -57,29 +57,29 @@ include_once("./Plantilla/menuAdministrador.php");
 
 
                                         <div class="col-md-6">
-                                            <label>Nombre de Donante</label>
+                                            <label class="control-label">Donante</label>
                                             <div class="form-group">
+                                                <select name="dui_donante" class="form-control">
 
-                                                <input type="text" autocomplete="off" name="nombre" class="form-control" placeholder="Ingresé nombre" />
-                                                <div class="textarea input-group-icon"><i class="fa fa-pencil"></i></div>
+                                                    <option required>Seleccioné el donador</option>
+                                                    <?php
+                                                        $sql = "SELECT *  FROM tb_donantes";
+                                                        $query = mysqli_query($con, $sql);
+
+
+                                                        while ($row = mysqli_fetch_array($query)) {
+                                                        ?>
+                                                            <option value="<?php echo $row['dui_donante'] ?>"> <?php echo $row['nombre_donante'] ?>  <?php echo $row['apellido_donante'] ?> </option>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                </select>
+                                                <div class="input-group-icon"><i class="fa fa-indent"></i></div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
-                                            <label>Apellidos de Donante</label>
-                                            <div class="form-group">
-                                                <input type="text" autocomplete="off" name="apellido" class="form-control" placeholder="Ingresé apellidos" />
-                                                <div class="textarea input-group-icon"><i class="fa fa-pencil"></i></div>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-md-6">
-                                            <label>DUI de Donante</label>
-                                            <div class="form-group">
-                                                <input type="text" autocomplete="off" name="dui" class="form-control" pattern="^[0-9]{8}-[0-9]{1}$" placeholder="00000000-0" size="10" maxlength="10" />
-                                                <div class="input-group-icon"><i class="fa fa-address-card"></i></div>
-                                            </div>
-                                        </div>
 
                                         <div class="col-md-6">
                                             <label>Donación</label>
@@ -121,7 +121,7 @@ include_once("./Plantilla/menuAdministrador.php");
 
                                                         while ($row = mysqli_fetch_array($query)) {
                                                         ?>
-                                                            <option value="<?php echo $row['dui_empleado'] ?>"> <?php //echo $row['nombre_empleado'] ?> </option>
+                                                            <option value="<?php echo $row['dui_empleado'] ?>"> <?php echo $row['nombre_empleado'] ?> <?php echo $row['apellido_empleado'] ?> </option>
                                                         <?php
                                                         }
                                                         ?>
@@ -204,9 +204,8 @@ include_once("./Plantilla/seccionScript.php");
 if (isset($_POST['registrar'])) {
 
 
-    $dui = $_POST['dui'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
+    $dui_donante = $_POST['dui_donante'];
+    
 
     
     $nombre_donacion = $_POST['nombre_donacion'];
@@ -216,7 +215,7 @@ if (isset($_POST['registrar'])) {
 
     //$estado='activo';
 
-    $query = "INSERT INTO `tb_donaciones`(`nombre_donacion`, `descripcion_donacion`, `fecha_donacion`, `dui_donante`, `diu_empleado`) VALUES ('$nombre_donacion','$descripcion_donacion','$fecha_donacion','$dui','$dui_empleado')";
+    $query = "INSERT INTO tb_donaciones(nombre_donacion, descripcion_donacion, fecha_donacion, dui_donante, diu_empleado) VALUES ('$nombre_donacion','$descripcion_donacion','$fecha_donacion','$dui_donante','$dui_empleado')";
     mysqli_query($conex, $query);
 
 

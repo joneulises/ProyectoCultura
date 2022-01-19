@@ -106,8 +106,8 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-woman"></i><span class="nav-text">Empleado</span></a>
                         <ul aria-expanded="false">
-                             <li><a href="FormRegistrarEmpleado.php">Registrar Empleado</a></li>
-                            <li><a href="Ver_Empleado.php">Ver Empleado</a></li>
+                             <li><a href="http://localhost/ProyectoCultura/FormRegistrarEmpleado.php">Registrar Empleado</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/Ver_Empleado.php">Ver Empleado</a></li>
                         </ul>
                     </li>
 
@@ -167,8 +167,8 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon ion-md-brush"></i><span class="nav-text">Talleres</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./formTalleres.php">Registrar Taller</a></li>
-                            <li><a href="./prueba.php">Ver Taller</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/FormRegistrarTaller.php">Registrar Taller</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/Ver_Taller.php">Ver Taller</a></li>
                         </ul>
                     </li>
 
@@ -205,8 +205,13 @@
 
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon ion-md-easel"></i><span class="nav-text">Salas</span></a>
                     <ul aria-expanded="false">
+<<<<<<< HEAD
                         <li><a href="formSalas.php">Registrar sala</a></li>
                         <li><a href="tabla_salas.php">Ver salas</a></li>
+=======
+                        <li><a href="../http://localhost/ProyectoCultura/formSalas.php">Registrar sala</a></li>
+                        <li><a href="#">Ver salas</a></li>
+>>>>>>> 2df7f15be796832a04084682d099d2a6aac866eb
                     </ul>
                 </li>
 
