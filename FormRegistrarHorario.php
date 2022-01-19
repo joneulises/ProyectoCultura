@@ -58,10 +58,10 @@ include_once("./Plantilla/menuAdministrador.php");
                                      <option value=""></option>
                                     <option value="Lunes" >Lunes</option>
                                     <option value="Martes" >Martes</option>
-                                    <option value="Miercoles" >Miercoles</option>
+                                    <option value="Miercoles" >Miércoles</option>
                                     <option value="Jueves" >Jueves</option>
                                     <option value="Viernes" >Viernes</option>
-                                    <option value="Sabado" >Sabado</option>
+                                    <option value="Sabado" >Sábado</option>
                                     <option value="Domingo" >Domingo</option>
                                 </select>    
                                 <div class="input-group-icon"><i class="fa fa-indent"></i></div>           
