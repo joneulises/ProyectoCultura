@@ -76,14 +76,12 @@ $con = conectar();
                             <tr>
                                 <th>ID</th>
                                 <th>Donacion</th>
-                                <th>Apellido</th>
-                                <th>Fecha Nácimiento</th>
-                                <th>Fecha Contrato</th>
-                                <th>Teléfono</th>
-                                <th>Dirección</th>
-                                <th>Cantón</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
+                                <th>Descripción de Donación</th>
+                                <th>Fecha Donacion</th>
+                                <th>Nombre Donante</th>
+                                <th>Dui Donante</th>
+                                <th>Dui Empleado</th>                               
+   
 
 
                             </tr>
@@ -91,36 +89,34 @@ $con = conectar();
                         <tbody>
                             <?php
                             $sql = "SELECT
-                                         c.nombre_canton, 
-                                         t.dui_empleado, 
-                                         t.nombre_empleado, 
-                                         t.apellido_empleado, 
-                                         DATE_FORMAT(t.fecha_nacimiento_empleado,'%d/%m/%y') AS fecha_nacimiento_empleado, 
-                                         DATE_FORMAT(t.fecha_contrato_empleado,'%d/%m/%y') AS fecha_contrato_empleado, 
-                                         t.direccion_empleado, 
-                                         t.telefono
-                                     FROM
-                                         tb_empleados AS t
-                                         INNER JOIN
-                                         tb_cantones AS c
-                                         ON 
-                                             t.id_canton = c.id_canton";
+                            tb_donaciones.id_donacion,
+                            tb_donaciones.nombre_donacion,
+                            tb_donaciones.descripcion_donacion,
+                            tb_donaciones.fecha_donacion,
+                            tb_donaciones.dui_donante,
+                            tb_donaciones.diu_empleado,
+                            tb_donantes.nombre_donante,
+                            tb_donantes.apellido_donante,
+                            tb_donantes.dui_donante
+                            FROM
+                            tb_donantes
+                            INNER JOIN tb_donaciones ON tb_donaciones.dui_donante = tb_donantes.dui_donante";
                             $query = mysqli_query($con, $sql);
 
 
                             while ($row = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
-                                    <td><?php echo $row['dui_empleado'] ?></td>
-                                    <td><?php echo $row['nombre_empleado'] ?></td>
-                                    <td><?php echo $row['apellido_empleado'] ?></td>
-                                    <td><?php echo $row['fecha_nacimiento_empleado'] ?></td>
-                                    <td><?php echo $row['fecha_contrato_empleado'] ?></td>
-                                    <td><?php echo $row['telefono'] ?></td>
-                                    <td><?php echo $row['direccion_empleado'] ?></td>
-                                    <td><?php echo $row['nombre_canton'] ?></td>
-                                    <td><a href="FormActualizar_Empleado.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar</a></td>
-                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_dui" data-id="<?php echo $row['dui_empleado'] ?>">Eliminar</a></td>
+                                    <td><?php echo $row['id_donacion'] ?></td>
+                                    <td><?php echo $row['nombre_donacion'] ?></td>
+                                    <td><?php echo $row['descripcion_donacion'] ?></td>
+                                    <td><?php echo $row['fecha_donacion'] ?></td>
+                                    <td><?php echo $row['nombre_donante'] ?> <?php echo $row['apellido_donante'] ?></td>
+                                    <td><?php echo $row['dui_donante'] ?></td>
+                                    <td><?php echo $row['diu_empleado'] ?></td>
+                                   
+                                    
+                                    
                                 </tr>
                             <?php
                             }
