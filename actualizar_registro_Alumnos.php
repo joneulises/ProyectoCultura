@@ -333,7 +333,7 @@ include_once("./Plantilla/seccionScript.php");
 //TODO EL CODIGO PARA ACTUALIZAR
 
 if (isset($_POST['update'])) {
-    // $dui = $_GET['dui'];
+     //$id = $_GET['id_alumno'];
 
     $nombrealumno  = $_POST['nombre'];
     $apellidoalumno = $_POST['apellido'];
