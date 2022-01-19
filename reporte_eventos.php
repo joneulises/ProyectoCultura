@@ -74,7 +74,7 @@ $pdf->SetFillColor(204,220,255 );
 $pdf->SetFont('Arial', 'B', 11);
 //ENCABEZADO DE LA TABLA
 
-$pdf->Cell(75, 6, 'NOMBRE',       1, 0, 'C', 1);
+$pdf->Cell(75, 6, utf8_decode ('NOMBRE'),       1, 0, 'C', 1);
 $pdf->Cell(60, 6, 'FECHA',     1, 0, 'C', 1);
 $pdf->Cell(40, 6, 'HORA DE EVENTO',       1, 0, 'C', 1);
 $pdf->Cell(65, 6, 'LOCALIDAD',       1, 0, 'C', 1);
