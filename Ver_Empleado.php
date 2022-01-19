@@ -40,7 +40,7 @@ $con = conectar();
 <body>
     <header>
         <h2 class="text-center text-light">Casa de la cultura</h2>
-        <h2 class="text-center text-light">Listado de EmpleadosT</h2>
+        <h2 class="text-center text-light">Listado de Empleados</h2>
 
     </header>
 
@@ -54,8 +54,11 @@ $con = conectar();
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php } ?>
-        <a href="http://localhost/ProyectoCultura/menu_administrador.php" class="btn btn-primary">
+        <a href="./menu_administrador.php" class="btn btn-primary">
             <h4> Volver al Menú </h4>
+        </a>
+        <a href="./FormRegistrarEmpleado.php" class="btn btn-primary">
+            <h4> Registrar Empleado </h4>
         </a>
             <br>
         <a href="./reporte_tallerista.php" class="btn btn-info">
@@ -89,15 +92,15 @@ $con = conectar();
                             <?php
                             $sql = "SELECT
                                          c.nombre_canton, 
-                                         t.dui_tallerista, 
-                                         t.nombre_tallerista, 
-                                         t.apellido_tallerista, 
-                                         DATE_FORMAT(t.fecha_nacimiento_tallerista,'%d/%m/%y') AS fecha_nacimiento_tallerista, 
-                                         DATE_FORMAT(t.fecha_contrato_tallerista,'%d/%m/%y') AS fecha_contrato_tallerista, 
-                                         t.direccion_tallerista, 
+                                         t.dui_empleado, 
+                                         t.nombre_empleado, 
+                                         t.apellido_empleado, 
+                                         DATE_FORMAT(t.fecha_nacimiento_empleado,'%d/%m/%y') AS fecha_nacimiento_empleado, 
+                                         DATE_FORMAT(t.fecha_contrato_empleado,'%d/%m/%y') AS fecha_contrato_empleado, 
+                                         t.direccion_empleado, 
                                          t.telefono
                                      FROM
-                                         tb_talleristas AS t
+                                         tb_empleados AS t
                                          INNER JOIN
                                          tb_cantones AS c
                                          ON 
@@ -108,16 +111,16 @@ $con = conectar();
                             while ($row = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
-                                    <td><?php echo $row['dui_tallerista'] ?></td>
-                                    <td><?php echo $row['nombre_tallerista'] ?></td>
-                                    <td><?php echo $row['apellido_tallerista'] ?></td>
-                                    <td><?php echo $row['fecha_nacimiento_tallerista'] ?></td>
-                                    <td><?php echo $row['fecha_contrato_tallerista'] ?></td>
+                                    <td><?php echo $row['dui_empleado'] ?></td>
+                                    <td><?php echo $row['nombre_empleado'] ?></td>
+                                    <td><?php echo $row['apellido_empleado'] ?></td>
+                                    <td><?php echo $row['fecha_nacimiento_empleado'] ?></td>
+                                    <td><?php echo $row['fecha_contrato_empleado'] ?></td>
                                     <td><?php echo $row['telefono'] ?></td>
-                                    <td><?php echo $row['direccion_tallerista'] ?></td>
+                                    <td><?php echo $row['direccion_empleado'] ?></td>
                                     <td><?php echo $row['nombre_canton'] ?></td>
-                                    <td><a href="FormActualizar_Tallerista.php?dui=<?php echo $row['dui_tallerista'] ?>" class="btn btn-info">Editar</a></td>
-                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_dui" data-id="<?php echo $row['dui_tallerista'] ?>">Eliminar</a></td>
+                                    <td><a href="FormActualizar_Empleado.php?dui=<?php echo $row['dui_empleado'] ?>" class="btn btn-info">Editar</a></td>
+                                    <td><a href="javascript:void(0)" class="btn btn-danger" id="delete_dui" data-id="<?php echo $row['dui_empleado'] ?>">Eliminar</a></td>
                                 </tr>
                             <?php
                             }
@@ -181,7 +184,7 @@ $con = conectar();
                     return new Promise(function(resolve) {
                        // alert('entre');
                         $.ajax({
-                                url: 'Delete_Tallerista.php',
+                                url: 'Delete_Empleado.php',
                                 type: 'POST',
                                 data: 'delete=' +dui,
                                 dataType: 'json'
@@ -196,7 +199,7 @@ $con = conectar();
                                     closeOnConfirm: false
                                 }).then(function(result) {
                                     if (result.value) {
-                                        window.location = "Ver_Tallerista.php";
+                                        window.location = "Ver_Empleado.php";
                                     }
                                 });
                             })
