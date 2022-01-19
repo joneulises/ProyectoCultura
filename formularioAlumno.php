@@ -4,6 +4,8 @@
 include("con_db.php");
 $con = conectar();
 
+date_default_timezone_set('America/El_Salvador');
+$fechaActual = date('Y-m-d H:i:s');
 ?>
 
 
@@ -15,6 +17,7 @@ $con = conectar();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Casa de la Cultura San Vicente </title>
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
@@ -23,6 +26,27 @@ $con = conectar();
     <link href="./css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="../vendor/sweetalert2/dist/sweetalert2.min.css">
+<!-- Estilos -->
+    <meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Inicio</title>
+	<!-- set your website meta description and keywords -->
+	<meta name="description" content="Add your business website description here">
+	<meta name="keywords" content="Add your business website keywords here">
+	<!-- Bootstrap Stylesheets -->
+
+	<!-- Font Awesome Stylesheets -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- Template Main Stylesheets -->
+	<link rel="stylesheet" href="css/menu.css">
+	<link rel="stylesheet" href="css/carrusel.css">
+	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/contact-form.css" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+
+
 
 
 
@@ -66,25 +90,18 @@ $con = conectar();
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <a href="menu_secretaria.html" class="brand-logo">
 
-                <img src="images/img_casacultura/logo.png" alt="130" width="130" height="130">
+        <div class="navegacion">
+		<nav id="navigation-container">
+			<img style="align-content: center;" class="logo" src="img/Proyecto - Drawing 2450649906371411432.png">
+			<a style="color: orange;" class="logo-letra">Casa de la Cultura de San Vicente</a>
+			<ul>
+				<li><a href="index.php">Inicio <span class="icon icon-up-dir"></span></a></li>
+			
+			</ul>
+		</nav>
+	</div>
 
-
-                <!--  
-                    <img class="logo-compact" src="./images/logo-text.png" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">   
-            -->
-            </a>
-
-
-            <div class="nav-control">
-                <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
-                </div>
-            </div>
-        </div>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -247,7 +264,7 @@ $con = conectar();
                                                     <label class="label">Seleccione el taller</label>
                                                     <div class="form-group col-sm-6 col-lg-12">
                                                         <div class="help-block with-errors"></div>
-                                                        <select name="taller" id="taller" class="form-control" required data-error="Por favor ingresa la direccion del evento">
+                                                        <select name="taller" id="taller" class="form-control" required data-error="Por favor ingresa el taller">
 
                                                             <!-- Spinner de la tabla Taller-->
                                                             <?php
@@ -490,8 +507,11 @@ $con = conectar();
 
             if ($resultado == 1) {
 
-                $sqltabla2 = "INSERT INTO `tb_alumnos`(`id_alumno`,`nombre_alumno`, `apellido_alumno`, `fecha_nacimiento_alumno`, `sexo_alumno`, `zona_alumno`, `id_canton`, `direccion_alumno`, id_responsablre, telefono) VALUES ('$numero_aleatorio','$nombre_alumno','$apellido_alumno','$fecha_alumno','$sexo_alumno','$zona_alumno','$canton_alumno','$direccion_alumno','$numero_aleatorio','$telefono_alumno')";
+                $sqltabla2 = "INSERT INTO `tb_alumnos`(`id_alumno`,`nombre_alumno`, `apellido_alumno`, `fecha_nacimiento_alumno`, `sexo_alumno`, `zona_alumno`, `id_canton`, `direccion_alumno`, id_responsablre, telefono, taller_alumno) VALUES ('$numero_aleatorio','$nombre_alumno','$apellido_alumno','$fecha_alumno','$sexo_alumno','$zona_alumno','$canton_alumno','$direccion_alumno','$numero_aleatorio','$telefono_alumno','$taller_alumno')";
                 $resul = mysqli_query($conex, $sqltabla2);
+
+                $query2 = "INSERT INTO tb_inscripciones (fecha_inscripcion, id_alumno, id_taller, comentarios_inscripcion) values('$fechaActual','$numero_aleatorio', '$taller_alumno','Ninguno')";
+                mysqli_query($conex, $query2);
 
                 $extraerID= "SELECT * FROM `tb_alumnos` WHERE id_alumno='$numero_aleatorio' ";
                 $query22 = mysqli_query($con, $extraerID);

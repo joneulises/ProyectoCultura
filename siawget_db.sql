@@ -11,7 +11,7 @@
  Target Server Version : 100421
  File Encoding         : 65001
 
- Date: 18/01/2022 08:05:09
+ Date: 18/01/2022 14:40:57
 */
 
 SET NAMES utf8mb4;
@@ -99,7 +99,7 @@ CREATE TABLE `tb_bitacora`  (
   `accion_bitacora` text CHARACTER SET utf8 COLLATE utf8_bin NULL,
   `usuario_bitacora` text CHARACTER SET utf8 COLLATE utf8_bin NULL,
   PRIMARY KEY (`id_bitacora`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 71 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 75 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_bitacora
@@ -119,6 +119,10 @@ INSERT INTO `tb_bitacora` VALUES (67, 'Se ha modificado un registro', 'tb_taller
 INSERT INTO `tb_bitacora` VALUES (68, 'Se ha modificado un registro', 'tb_talleristas', '2022-01-18 14:58:36.000000', 'Registro Actualizado aOscar  Bladimir', 'jonportillo');
 INSERT INTO `tb_bitacora` VALUES (69, 'Se ha modificado un registro', 'tb_talleristas', '2022-01-18 14:59:05.000000', 'Registro Actualizado aFrancisca Elizabeth', 'jonportillo');
 INSERT INTO `tb_bitacora` VALUES (70, 'Se ha modificado un registro', 'tb_talleristas', '2022-01-18 15:00:09.000000', 'Registro Actualizado aJosselyn  Noemy', 'jonportillo');
+INSERT INTO `tb_bitacora` VALUES (71, 'Se ha modificado un registro', 'tb_talleristas', '2022-01-18 15:22:10.000000', 'Registro Actualizado aFrancisca Elizabeth', 'jonportillo');
+INSERT INTO `tb_bitacora` VALUES (72, 'Se ha insertado un registro', 'tb_talleristas', '2022-01-18 11:30:21.000000', 'Xiomara Rosibel', 'jonportillo');
+INSERT INTO `tb_bitacora` VALUES (73, 'Se ha modificado un registro', 'tb_talleristas', '2022-01-18 11:47:10.000000', 'Registro Actualizado aXiomara Magdalena', 'jonportillo');
+INSERT INTO `tb_bitacora` VALUES (74, 'Se ha eliminado un registro', 'tb_talleristas', '2022-01-18 18:54:57.000000', 'Registro Eliminado 45268963-2', 'jonportillo');
 
 -- ----------------------------
 -- Table structure for tb_cantones
@@ -211,7 +215,6 @@ CREATE TABLE `tb_empleados`  (
   `sexo_empleado` tinyint(4) NULL DEFAULT NULL,
   `fecha_nacimiento_empleado` date NULL DEFAULT NULL,
   `fecha_contrato_empleado` date NULL DEFAULT NULL,
-  `cargo_empleado` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `direccion_empleado` text CHARACTER SET utf8 COLLATE utf8_bin NULL,
   `id_canton` int(11) NULL DEFAULT NULL,
   `telefono` varchar(9) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
@@ -223,8 +226,8 @@ CREATE TABLE `tb_empleados`  (
 -- ----------------------------
 -- Records of tb_empleados
 -- ----------------------------
-INSERT INTO `tb_empleados` VALUES ('02135698-5', 'Jonathan', 'Portillo Perez', 1, '2022-01-21', '2022-01-19', 'administrador', 'las lomas2', 5, '60014895');
-INSERT INTO `tb_empleados` VALUES ('05201686-8', 'Rafael ', 'Gonzales', 0, '2022-01-13', '2022-01-20', 'secretaria', 'las lomas', 2, '78667913');
+INSERT INTO `tb_empleados` VALUES ('02135698-5', 'Jonathan', 'Portillo Perez', 1, '2022-01-21', '2022-01-19', 'las lomas2', 5, '60014895');
+INSERT INTO `tb_empleados` VALUES ('05201686-8', 'Rafael ', 'Gonzales', 0, '2022-01-13', '2022-01-20', 'las lomas', 2, '78667913');
 
 -- ----------------------------
 -- Table structure for tb_eventos
@@ -430,7 +433,7 @@ CREATE TABLE `tb_talleristas`  (
 INSERT INTO `tb_talleristas` VALUES ('05201686-5', 'Josselyn  Noemy', 'Romero Calderon', 'F', '1869-12-11', '2022-01-13', '           lempa casa#45 frente la hermita   la paz        ', 5, '7866-7913');
 INSERT INTO `tb_talleristas` VALUES ('05201689-5', 'Juan Carlos', 'Portillo Ramos', 'M', '1995-10-12', '2022-01-20', 'Frente a casa #26 a lado de iglesia bautista', 3, '7866-7895');
 INSERT INTO `tb_talleristas` VALUES ('06231596-8', 'Oscar  Bladimir', 'Ramirez de la O', 'M', '1995-10-12', '2022-01-19', 'Casa #15 frente jardin infantil ', 2, '7899-5689');
-INSERT INTO `tb_talleristas` VALUES ('08245654-7', 'Francisca Elizabeth', 'Castros Ramirez', 'F', '1995-12-01', '2021-09-20', ' Barrio Concepcion casa#45  ', 5, '');
+INSERT INTO `tb_talleristas` VALUES ('08245654-7', 'Francisca Elizabeth', 'Castros Ramirez', 'F', '1995-12-01', '2021-09-20', '  Barrio Concepcion casa#45   ', 10, '');
 
 -- ----------------------------
 -- Table structure for tb_usuario
@@ -454,8 +457,8 @@ CREATE TABLE `tb_usuario`  (
 -- ----------------------------
 -- Records of tb_usuario
 -- ----------------------------
-INSERT INTO `tb_usuario` VALUES ('em12', '$2y$10$BFGqTrHKD4hYnKIwUf/ji.4NsIaRS8RVr.ujzFrAMAfPLjBtSGyYe', 'em', '02135698-5', NULL, 'p12@gmail.com', 'activo');
+INSERT INTO `tb_usuario` VALUES ('em12', '$2y$10$BFGqTrHKD4hYnKIwUf/ji.4NsIaRS8RVr.ujzFrAMAfPLjBtSGyYe', 'em', '05201686-8', NULL, 'p12@gmail.com', 'activo');
 INSERT INTO `tb_usuario` VALUES ('francisca', '$2y$10$aXbHO.xgPGakkxohwHOsm.vu9yHVY/kI2NIq7mSWvABmQTUi4OqqG', 'ta', NULL, '08245654-7', 'Francisca@gmail.com', 'activo');
-INSERT INTO `tb_usuario` VALUES ('jonportillo', '$2y$10$mJAdTbxEoIX0zzpB/mnQB.xou6MIH.PHb0vgMfDgxP4bDTvyec8ty', 'ad', '05201686-8', NULL, 'jhonataneulises@gmail.com', 'activo');
+INSERT INTO `tb_usuario` VALUES ('jonportillo', '$2y$10$UNL5rZnTQ5KBkFoZixvIHe6RRCDM2gc28itAdg7hJiovIzpcIULU2', 'ad', '02135698-5', NULL, 'jhonataneulises@gmail.com', 'activo');
 
 SET FOREIGN_KEY_CHECKS = 1;

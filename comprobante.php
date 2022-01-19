@@ -14,7 +14,7 @@ function Header()
     // Movernos a la derecha
     $this->Cell(60);
   $this->SetTextColor(30,30,32);
-  $this->Text(70, 15, 'COMPROBANTE DE INSCRIPCION');
+  $this->Text(70, 15, utf8_decode ('COMPROBANTE DE INSCRIPCIÓN'));
   /* --- Line --- */
 
    $this->SetLineWidth(8); //antes de dibujar la linea
@@ -219,7 +219,7 @@ $pdf->Ln();
 
 $pdf->SetXY(15, 35);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 4, 'INFORMACION PERSONAL', 0, 1, 'C', false);
+$pdf->Cell(0, 4,utf8_decode ('INFORMACIÓN PERSONAL'), 0, 1, 'C', false);
 $pdf->Line(15, 40, 192, 40);
 $pdf->Ln(10);
 
@@ -255,35 +255,35 @@ $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 4, 'CANTON: ', 0, 1, 'L', false);
+$pdf->Cell(0, 4,utf8_decode ('CANTÓN: '), 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(0, 4, $row['nombre_canton'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 4, 'DIRECCION: ', 0, 1, 'L', false);
+$pdf->Cell(0, 4,utf8_decode ('DIRECCIÓN: '), 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(0, 4, $row['direccion_alumno'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 4, 'TELEFONO: ', 0, 1, 'L', false);
+$pdf->Cell(0, 4,utf8_decode ('TELÉFONO: '), 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(0, 4, $row['telefono'], 0, 1, 'L', false);
 $pdf->Ln(5);
 
-/*$pdf->SetX(10);
+$pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 4, 'TALLER: ', 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 4, $taller_alumno, 0, 1, 'L', false);
-$pdf->Ln(25);*/
+$pdf->Cell(0, 4, $row['taller_alumno'], 0, 1, 'L', false);
+$pdf->Ln(25);
 
 $pdf->SetXY(20, 150);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 4, 'DATOS DEL REPONSABLE', 0, 1, 'C', false);
+$pdf->Cell(0, 4, 'DATOS DEL RESPONSABLE', 0, 1, 'C', false);
 $pdf->Line(20, 155, 192, 155);
 $pdf->Ln(10);
 
@@ -302,10 +302,20 @@ $pdf->Ln(5);
 
 $pdf->SetX(10);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 4, 'TELEFONO: ', 0, 1, 'L', false);
+$pdf->Cell(0, 4,utf8_decode ('TELÉFONO: '), 0, 1, 'L', false);
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(0, 4, $row['telefono'], 0, 1, 'L', false);
+$pdf->Ln(20);
 
+
+$pdf->SetX(10);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 4, 'Me comprometo a no faltar a mis clases, a menos que sea por una emergencia,' , 0, 1, 'L', false);
+$pdf->Cell(0, 4, 'pues comprendo que pierdo la oportunidad de aprender y ademas entiendo', 0, 1, 'L', false);
+$pdf->Cell(0, 4, 'el esfuerzo de La Casa de La Cultura de San Vicente en cubrirlos gastos' , 0, 1, 'L', false);
+$pdf->Cell(0, 4, 'del tallerista con los limitados fondos de su presupuestoasignado' , 0, 1, 'L', false);
+
+  
 }
 
 $pdf->Output('D','Comprobante de Inscripcion.pdf');
