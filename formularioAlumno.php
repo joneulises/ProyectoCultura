@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
     <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="../vendor/sweetalert2/dist/sweetalert2.min.css">
 
 
 
@@ -219,8 +221,8 @@
 													<div class="help-block with-errors"></div>
 													<select name="sexo" id="sexo" class="form-control" required
 														data-error="Por favor seleccione su sexo">
-														<option value="0">Masculino</option>
-														<option value="1">Femenino</option>
+														<option value="Masculino">Masculino</option>
+														<option value="Femenino">Femenino</option>
 													</select>
 													<div class="input-group-icon"><i class="fa fa-venus-mars"></i></div>
 												</div>
@@ -366,7 +368,6 @@
                                                           <!--Termina el bloque de inputs-->
 
                                         </div>  <!--Termina row dentro del formulario-->
-
                                     </form>  <!--Termina form-->
 
                                     <!--TERMINA FORMULARIO_______________*****************-->

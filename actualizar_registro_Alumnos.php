@@ -8,6 +8,7 @@ $sql="SELECT * FROM tb_alumnos WHERE id_alumno='$id'";
 $query=mysqli_query($con,$sql);
 
 $row=mysqli_fetch_array($query);
+$canton = $row['id_canton'];
 ?> 
 
 <!DOCTYPE html>
@@ -371,7 +372,7 @@ $row=mysqli_fetch_array($query);
 													<div class="help-block with-errors"></div>
 													<input name="fechanac" id="fechanac" class="form-control"
 														type="date" required
-														data-error="Por favor ingrese su fecha de nacimiento">
+														data-error="Por favor ingrese su fecha de nacimiento" onchange="FormatDateField(this)" value="<?php echo $row['fecha_nacimiento_alumno'] ?>">
 													<div class="input-group-icon"><i class="fa fa-calendar"></i></div>
 												</div>
 											</div><!-- end form-group -->
@@ -393,7 +394,7 @@ $row=mysqli_fetch_array($query);
                                      
                                                             while($row=mysqli_fetch_array($query)){
                                                         ?>
-                                                            <option value="<?php  echo $row['id_canton']?>"> <?php  echo $row['nombre_canton']?> </option>
+                                                            <option value="<?php  echo $row['id_canton']?>" <?php  if($row['id_canton'] == $canton){ echo 'selected'; }?>> <?php  echo $row['nombre_canton']?> </option>
                                                             <?php 
                                                             }
                                                             ?>
@@ -423,7 +424,7 @@ $row=mysqli_fetch_array($query);
 													<div class="help-block with-errors"></div>
 													<input name="direccion" id="direccion" class="form-control"
 														type="text" required
-														data-error="Por favor ingrese su Dirección" value="<?php echo $row['direccion_alumno']  ?>" >
+														data-error="Por favor ingrese su Dirección" value="<?php echo $row['direccion_alumno'] ?>" >
 													<div class="input-group-icon"><i class="fa fa-street-view"></i>
 													</div>
 												</div>
@@ -434,7 +435,7 @@ $row=mysqli_fetch_array($query);
 												<div class="form-group col-sm-6 col-lg-12">
 													<div class="help-block with-errors"></div>
 													<input name="phone" id="phone" class="form-control" type="phone"
-														required data-error="Por favor ingrese su teléfono">
+														required data-error="Por favor ingrese su teléfono" value="<?php echo $row['telefono'] ?>">
 													<div class="input-group-icon"><i class="fa fa-phone"></i></div>
 												</div>
 											</div><!-- end form-group -->
