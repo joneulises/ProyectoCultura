@@ -168,7 +168,7 @@
                                 class="icon ion-md-brush"></i><span class="nav-text">Talleres</span></a>
                         <ul aria-expanded="false">
                             <li><a href="../FormRegistrarTaller.php">Registrar Taller</a></li>
-                            <li><a href="../Ver_Taller.php">Ver Taller</a></li>
+                            <li><a href="http://localhost/ProyectoCultura/Ver_Taller.php">Ver Taller</a></li>
                         </ul>
                     </li>
 
