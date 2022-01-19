@@ -35,12 +35,14 @@ $con = conectar();
 <body>
     <header>
         <h2 class="text-center text-light">Casa de la cultura</h2>
-        <h2 class="text-center text-light">Modificar Talleres</h2>
+        <h2 class="text-center text-light">Listado de talleres</h2>
     </header>
     <div style="height:50px"></div>
      <button  class="btn btn-custom"><a href="menu_administrador.php" style="color:#f8f9fa;">Volver a Menu</a></button>
 
-
+     <a href="./reporte_talleres.php" class="btn btn-info">
+        <i class="fa fa-print"></i> 
+        </a>
 
     <!--Ejemplo tabla con DataTables-->
     <div class="container">
@@ -102,15 +104,10 @@ $con = conectar();
     <!-- datatables JS -->
     <script type="text/javascript" src="tablas_css/datatables/datatables.min.js"></script>
 
-    <!-- para usar botones en datatables JS -->
-    <script src="tablas_css/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
-    <script src="tablas_css/datatables/JSZip-2.5.0/jszip.min.js"></script>
-    <script src="tablas_css/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-    <script src="tablas_css/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="tablas_css/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+   >
 
     <!-- código JS propìo-->
-    <script type="text/javascript" src="tablas_css/main.js"></script>
+    <script type="text/javascript" src="tablas_css/tallerista.main.js"></script>
 
 
 </body>
