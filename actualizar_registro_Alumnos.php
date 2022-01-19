@@ -274,7 +274,9 @@ include_once("./Plantilla/menuAdministrador.php");
 
                                                           <button type="submit" name="update" class="btn btn-custom" class="fa fa-save"></em> Actualizar</button>
                                                              <!-- <button type="submit" name="btnregistrar" id="submit" class="btn btn-custom"><em class="fa fa-save"></em> Registrar</button>  -->
-                                                              <button type="btn__reset" id="reset" class="btn btn-custom"><em class="fa fa-ban"></em> Cancelar</button>
+                                                             <a href="./tabla_registroAlumnos.php" class="btn btn-custom" class="fa fa-save" >
+                                                                 <h7> Cancelar </h7>
+                                                                 </a>
                                                       
                                                           </div><!-- end form-group -->	     
     
@@ -333,7 +335,7 @@ include_once("./Plantilla/seccionScript.php");
 //TODO EL CODIGO PARA ACTUALIZAR
 
 if (isset($_POST['update'])) {
-    // $dui = $_GET['dui'];
+     //$id = $_GET['id_alumno'];
 
     $nombrealumno  = $_POST['nombre'];
     $apellidoalumno = $_POST['apellido'];

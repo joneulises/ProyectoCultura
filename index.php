@@ -27,8 +27,24 @@
 		<nav id="navigation-container">
 			<img style="align-content: center;" class="logo" src="img/Proyecto - Drawing 2450649906371411432.png">
 			<a style="color: orange;" class="logo-letra">Casa de la Cultura de San Vicente</a>
+
 			<ul>
-				<li><a href="index.php">Inicio <span class="icon icon-up-dir"></span></a></li>
+			
+			<li>
+					<a href="#">Información <span class="icon icon-up-dir"></span></a>
+					<div class="submenu">
+					<div class="submenu-items">
+							<ul>
+							<li><a href="./reporte_talleres.php">Tálleres Disponibles<span class="icon icon-up-dir"></span></a></li>
+							</ul>
+							
+							<ul>
+							<li><a href="./reporte_eventos.php">Eventos próximos<span class="icon icon-up-dir"></span></a></li>
+							</ul>
+						</div>
+						</div>
+				</li>
+			<li>
 				<li><a href="formularioAlumno.php">Inscripción <span class="icon icon-up-dir"></span></a></li>
 				<li>
 					<a href="#">Login <span class="icon icon-up-dir"></span></a>
@@ -61,6 +77,8 @@
 			</ul>
 		</nav>
 	</div>
+	<br>
+	<br>
 	<h3 class="titulo-letra" style="color:#304f6f ;">Inicio</h3>
 	<div class="container-carrusel">
 		<ul class="slider">

@@ -22,7 +22,7 @@ class PDF extends FPDF {
         $this->Cell(250, 10, 'Casa de la Cultura San Vicente', 0, 0, 'C');
         $this->Ln(10);
         $this->Cell(30);
-        $this->Cell(250, 10, 'Listado de eventos', 0, 0, 'C');
+        $this->Cell(250, 10, utf8_decode('Tálleres Disponibles'), 0, 0, 'C');
 
  
         $this->SetDrawColor(0, 80, 180);
@@ -51,17 +51,13 @@ class PDF extends FPDF {
 
 //****************************fin de la plantilla encabezado.******************
 $reporte = mysqli_query($con, "SELECT
-tb_eventos.nombre_evento, 
-DATE_FORMAT(tb_eventos.fecha_evento,'%d/%m/%y') AS fecha, 
-tb_eventos.hora_evento, 
-tb_eventos.direccion_evento, 
-tb_cantones.nombre_canton
+tb_talleres.nombre_taller, 
+tb_talleres.descripcion_taller, 
+tb_talleres.tipo_taller, 
+ DATE_FORMAT(tb_talleres.fecha_inicio_taller,'%d/%m/%y') AS fecha,
+tb_talleres.duracion_taller
 FROM
-tb_eventos
-INNER JOIN
-tb_cantones
-ON 
-    tb_eventos.id_canton = tb_cantones.id_canton  ");
+tb_talleres");
 
 $pdf = new PDF('L','mm','Legal');//tamano oficio horizontal PDF()= carta vertical
 $pdf->AliasNbPages();
@@ -74,11 +70,11 @@ $pdf->SetFillColor(204,220,255 );
 $pdf->SetFont('Arial', 'B', 11);
 //ENCABEZADO DE LA TABLA
 
-$pdf->Cell(75, 6, utf8_decode ('NOMBRE'),       1, 0, 'C', 1);
-$pdf->Cell(60, 6, 'FECHA',     1, 0, 'C', 1);
-$pdf->Cell(40, 6, 'HORA DE EVENTO',       1, 0, 'C', 1);
-$pdf->Cell(65, 6, 'LOCALIDAD',       1, 0, 'C', 1);
-$pdf->Cell(80, 6, utf8_decode('DIRECCIÓN DE EVENTO'), 1, 1, 'C', 1);
+$pdf->Cell(50, 6, utf8_decode('NOMBRE'),1, 0, 'C', 1);
+$pdf->Cell(150, 6, utf8_decode('DESCRIPCIÓN'), 1, 0, 'C', 1);
+$pdf->Cell(40, 6, utf8_decode('TIPO TALLER'),       1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'FECHA INICIO', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, utf8_decode('DURACIÓN(Meses)'), 1, 1, 'C', 1);
 
 
 //BODY DE LA TABLA 
@@ -86,11 +82,11 @@ $pdf->SetFont('Arial', '', 10);
 
 
 while ($row = $reporte->fetch_assoc()) {
-    $pdf->Cell(75, 6,$row['nombre_evento'], 1, 0, 'C');
-    $pdf->Cell(60, 6, $row['fecha'], 1, 0, 'C');
-    $pdf->Cell(40, 6, $row['hora_evento'], 1, 0, 'C');
-    $pdf->Cell(65, 6, $row['nombre_canton'], 1, 0, 'C');
-    $pdf->Cell(80, 6, $row['direccion_evento'], 1, 1, 'C');
+    $pdf->Cell(50, 6,$row['nombre_taller'], 1, 0, 'C');
+    $pdf->Cell(150, 6, $row['descripcion_taller'], 1, 0, 'C');
+    $pdf->Cell(40, 6, $row['tipo_taller'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['fecha'], 1, 0, 'C');
+    $pdf->Cell(45, 6, $row['duracion_taller'], 1, 1, 'C');
     
     ;
 }

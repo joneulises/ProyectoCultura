@@ -59,7 +59,7 @@ $con = conectar();
                                 <th style="color: white;">Direccion</th>
                                 <th style="color: white;">Canton</th>
                                 <th style="color: white;">Editar</th>
-                                <th style="color: white;">Eliminar</th>
+                                <!--<th style="color: white;">Eliminar</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -92,7 +92,7 @@ $con = conectar();
                                                 <td><?php  echo $row['nombre_canton']?></td> 
 
                                                 <td><a href="actualizar_registro_Alumnos.php?id=<?php echo $row['id_alumno'] ?>" class="btn btn-info">Editar</a></td>
-                                                <td><a href="delete.php?id=<?php echo $row['id_alumno'] ?>" class="btn btn-danger">Eliminar</a></td>                                        
+                                                <!--<td><a href="delete.php?id=<?php echo $row['id_alumno'] ?>" class="btn btn-danger">Eliminar</a></td>     -->                                   
                                             </tr>
                                         <?php 
                                             }
