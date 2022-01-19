@@ -19,7 +19,7 @@ class PDF extends FPDF {
         $this->SetTextColor(0);
         $this->SetDrawColor(231, 169, 249);
         $this->SetLineWidth(1.5);
-        $this->Cell(250, 10, 'Casa de la cultura San Vicente', 0, 0, 'C');
+        $this->Cell(250, 10, 'Casa de la Cultura San Vicente', 0, 0, 'C');
         $this->Ln(10);
         $this->Cell(30);
         $this->Cell(250, 10, 'Listado de eventos', 0, 0, 'C');
