@@ -11,7 +11,7 @@
  Target Server Version : 100421
  File Encoding         : 65001
 
- Date: 18/01/2022 14:40:57
+ Date: 19/01/2022 06:30:07
 */
 
 SET NAMES utf8mb4;
@@ -26,12 +26,13 @@ CREATE TABLE `tb_alumnos`  (
   `nombre_alumno` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `apellido_alumno` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `fecha_nacimiento_alumno` date NULL DEFAULT NULL,
-  `sexo_alumno` tinyint(4) NULL DEFAULT NULL,
+  `sexo_alumno` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `zona_alumno` tinyint(4) NULL DEFAULT NULL,
   `id_canton` int(11) NULL DEFAULT NULL,
   `direccion_alumno` text CHARACTER SET utf8 COLLATE utf8_bin NULL,
   `id_responsablre` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `telefono` varchar(9) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `taller_alumno` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id_alumno`) USING BTREE,
   INDEX `fk_alumno_responsable`(`id_responsablre`) USING BTREE,
   INDEX `fk_canton_alumno`(`id_canton`) USING BTREE,
@@ -42,6 +43,11 @@ CREATE TABLE `tb_alumnos`  (
 -- ----------------------------
 -- Records of tb_alumnos
 -- ----------------------------
+INSERT INTO `tb_alumnos` VALUES ('0347', 'Jhonatan', 'Berardo', '2001-03-07', 'Masculino', 10, 10, '11 Avenida Norte San Felipe', '0347', '78542136', 4);
+INSERT INTO `tb_alumnos` VALUES ('0462', 'Pedro', 'Perez', '2000-02-15', 'Masculino', 3, 3, '17 avenida norte Barrio San Juan de Dios', '0462', '78541263', 1);
+INSERT INTO `tb_alumnos` VALUES ('2933', 'Erick', 'Perez', '2000-02-15', 'Masculino', 2, 2, '22 Avenida Norte', '2933', '78542136', 8);
+INSERT INTO `tb_alumnos` VALUES ('4528', 'Oscar', 'Ramirez', '1998-10-20', 'Masculino', 5, 5, '17 avenida norte Barrio San Juan de Dios', '4528', '78542136', 0);
+INSERT INTO `tb_alumnos` VALUES ('6894', 'Erick', 'Alfaro', '1996-04-08', 'Masculino', 4, 4, '11 Avenida Norte San Felipe', '6894', '7632145', 0);
 
 -- ----------------------------
 -- Table structure for tb_asignaciones
@@ -243,11 +249,13 @@ CREATE TABLE `tb_eventos`  (
   PRIMARY KEY (`id_evento`) USING BTREE,
   INDEX `fk_canton_eventos`(`id_canton`) USING BTREE,
   CONSTRAINT `fk_canton_eventos` FOREIGN KEY (`id_canton`) REFERENCES `tb_cantones` (`id_canton`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_eventos
 -- ----------------------------
+INSERT INTO `tb_eventos` VALUES (1, 'Concurso de Musica Viento', '2022-01-12', '09:00:16', 'Frente Parque ', 3);
+INSERT INTO `tb_eventos` VALUES (2, 'Talentos Cultura', '2022-02-02', '11:30:31', 'Frente a jadirn infantil', 7);
 
 -- ----------------------------
 -- Table structure for tb_horarios
@@ -314,11 +322,13 @@ CREATE TABLE `tb_inscripciones`  (
   INDEX `fk_taller_inscripcion`(`id_taller`) USING BTREE,
   CONSTRAINT `fk_inscripcion_alumno` FOREIGN KEY (`id_alumno`) REFERENCES `tb_alumnos` (`id_alumno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_taller_inscripcion` FOREIGN KEY (`id_taller`) REFERENCES `tb_talleres` (`id_taller`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_inscripciones
 -- ----------------------------
+INSERT INTO `tb_inscripciones` VALUES (1, '2022-01-19', '0462', 1, 'Ninguno');
+INSERT INTO `tb_inscripciones` VALUES (2, '2022-01-19', '2933', 8, 'Ninguno');
 
 -- ----------------------------
 -- Table structure for tb_municipios
@@ -336,7 +346,7 @@ CREATE TABLE `tb_municipios`  (
 -- ----------------------------
 -- Records of tb_municipios
 -- ----------------------------
-INSERT INTO `tb_municipios` VALUES (1, 'Apastepque', 1);
+INSERT INTO `tb_municipios` VALUES (1, 'Apastepeque', 1);
 INSERT INTO `tb_municipios` VALUES (3, 'Guadalupe', 1);
 INSERT INTO `tb_municipios` VALUES (4, 'San Lorenzo', 1);
 INSERT INTO `tb_municipios` VALUES (5, 'San Vicente', 1);
@@ -358,6 +368,20 @@ CREATE TABLE `tb_responsable`  (
 -- ----------------------------
 -- Records of tb_responsable
 -- ----------------------------
+INSERT INTO `tb_responsable` VALUES ('0347', 'Tabo', 'Huezo', 'TIO', '74125896');
+INSERT INTO `tb_responsable` VALUES ('0462', 'Juan', 'Alferez', 'Abuelo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('0635', 'Wendy', 'May', 'Abuelo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('0955', 'Juan', 'Huezo', 'Primo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('1293', 'Kevin', 'May', 'Abuelo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('1497', 'Juan', 'Ayala', 'TIO', '74125896');
+INSERT INTO `tb_responsable` VALUES ('1938', 'Kevin', 'May', 'Abuelo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('2933', 'Wendy', 'Martinez', 'Prima', '74125896');
+INSERT INTO `tb_responsable` VALUES ('4367', 'Pablo', 'Martinez', 'Abuelo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('4528', 'Wendy', 'Ayala', 'Prima', '74125896');
+INSERT INTO `tb_responsable` VALUES ('6894', 'Gustavo', 'Alferez', 'Abuelo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('7605', 'Tabo', 'Huezo', 'Abuelo', '74125896');
+INSERT INTO `tb_responsable` VALUES ('7844', 'Juan', 'Ayala', 'TIO', '74125896');
+INSERT INTO `tb_responsable` VALUES ('8569', 'Kevin', 'Alferez', 'Primo', '74123121');
 
 -- ----------------------------
 -- Table structure for tb_salas
