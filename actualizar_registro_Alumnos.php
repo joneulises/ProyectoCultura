@@ -335,19 +335,20 @@ include_once("./Plantilla/seccionScript.php");
 //TODO EL CODIGO PARA ACTUALIZAR
 
 if (isset($_POST['update'])) {
-     //$id = $_GET['id_alumno'];
+     $id = $_POST['id_alumno'];
 
     $nombrealumno  = $_POST['nombre'];
     $apellidoalumno = $_POST['apellido'];
     $f_n = $_POST['fechanac'];
-    $idcanton = $_POST['fecha_n'];
-    $sexoalumno = $_POST['sexo_tallerista'];
+    $idcanton = $_POST['canton'];
+    $sexoalumno = $_POST['sexo'];
     $direc = $_POST['direccion'];
-    $telefono = $_POST['telefono'];
+    $telefono = $_POST['phone'];
+    $idtaller=$_POST['taller'];
 
 
 
-    $sql = "UPDATE `tb_alumnos` SET `id_alumno`='$idalumno',`nombre_alumno`='$nombrealumno',`apellido_alumno`='$apellidoalumno',`fecha_nacimiento_alumno`='$f_n',`sexo_alumno`='$sexoalumno',`id_canton`='$idcanton',`direccion_alumno`='$direc',`telefono`='$telefono',`taller_alumno`='$idtaller' WHERE '$id'";
+    $sql = "UPDATE `tb_alumnos` SET `id_alumno`='$id',`nombre_alumno`='$nombrealumno',`apellido_alumno`='$apellidoalumno',`fecha_nacimiento_alumno`='$f_n',`sexo_alumno`='$sexoalumno',`id_canton`='$idcanton',`direccion_alumno`='$direc',`telefono`='$telefono',`taller_alumno`='$idtaller' WHERE id_alumno='$id'";
     $resutado = mysqli_query($con, $sql);
     //consulta para insertar a la tabla bitacora
     $query2 = "INSERT INTO tb_bitacora (evento_bitacora,tabla_bitacora,fecha_bitacora,accion_bitacora,usuario_bitacora) values('Se ha modificado un registro','tb_talleristas','$fechaActual',concat('Registro Actualizado a','$nombret'),'$_var')";
