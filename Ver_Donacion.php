@@ -58,7 +58,7 @@ $con = conectar();
             <h4> Volver al Menú </h4>
         </a>
         <a href="./FormRegistrarEmpleado.php" class="btn btn-primary">
-            <h4> Registrar Empleado </h4>
+            <h4> Registrar Donación </h4>
         </a>
             <br>
         <a href="./reporte_tallerista.php" class="btn btn-info">
